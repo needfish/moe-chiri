@@ -1,7 +1,6 @@
 ---
 title: "How to do a thing"
 pubDate: '2026-07-05'
-tags: ["life", "functioning", "philosophy"]
 ---
 
 First off, this is a post about brute forcing my executive function issues through thinking.

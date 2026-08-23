@@ -4,7 +4,7 @@ import BasePage from "./BasePage.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, pubDate, tags } = Astro.props;
+const { title, pubDate } = Astro.props;
 
 function formatDate(date: Date) {
     const y = date.getFullYear();
@@ -19,15 +19,6 @@ function formatDate(date: Date) {
     <p class="date">
         <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
     </p>
-    {
-        tags && tags.length > 0 && (
-            <div class="tags">
-                {tags.map((tag) => (
-                    <span>{tag}</span>
-                ))}
-            </div>
-        )
-    }
     <div class="prose">
         <slot />
     </div>

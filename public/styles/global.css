@@ -29,7 +29,7 @@
         color-scheme: dark;
         -webkit-font-smoothing: antialiased;
         -webkit-text-size-adjust: none;
-        -moz-osx-font-smoothing:grayscale
+        -moz-osx-font-smoothing:grayscale;
         text-size-adjust: none;
         hanging-punctuation: first allow-end last;
     }
@@ -48,7 +48,6 @@
 }
 
 :root {
-    --w: 36rem;
     --s: "Kitan Mono Term", monospace;
     --m: var(--s);
     --fs: 14px;
@@ -73,7 +72,6 @@
     body {
         margin: 0 auto;
         padding: 1rem 1.5rem 1rem;
-        max-width: var(--w);
         font-family: var(--s);
         font-size: var(--fs);
         line-height: var(--lh);
@@ -199,21 +197,6 @@
     .date time {
         font-family: var(--m);
         font-size: var(--fs-sm);
-    }
-
-    .tags {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-        margin: 0 0 1.5em;
-    }
-    .tags span {
-        font-family: var(--m);
-        font-size: var(--fs-sm);
-        padding: 0.2em 0.6em;
-        border: 1px solid var(--b);
-        border-radius: 3px;
-        color: var(--ts);
     }
 
     .prose p {

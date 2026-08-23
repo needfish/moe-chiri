@@ -1,7 +1,6 @@
 ---
 title: "Daily things I find useful"
 pubDate: '2026-07-09'
-tags: ["life"]
 ---
 
 I don't have anything that I can call a daily routine, or more correctly, what I would have called daily routines did not stick after some period of disruption.

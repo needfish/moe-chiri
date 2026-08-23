@@ -1,7 +1,6 @@
 ---
 title: "On botsitting"
 pubDate: '2026-07-12'
-tags: ["ai", "vibecoding"]
 ---
 
 For the past few months I have been pretty heavy on vibecoding, mainly on a React frontend, which I have never done before.
