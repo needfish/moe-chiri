@@ -25,7 +25,10 @@ const { title, description } = Astro.props;
     </body>
 </html>
 
-<style>
+<style is:global>
+    :root {
+        --color: #fa9442;
+    }
     @font-face {
         font-family: "Kitan Mono Term";
         src: url("./fonts/KitanMonoTerm-Regular.woff2");
@@ -37,11 +40,18 @@ const { title, description } = Astro.props;
         max-width: 80ch;
         margin: 0 auto;
         padding: 1rem 1rem 1rem 1rem;
-        font-family: "Kitan Mono Term";
+        font-family: "Kitan Mono Term", sans-serif;
         text-wrap: balanced;
-        font-size: 16px;
     }
     a {
-        color: #fa9442;
+        color: var(--color);
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: 16px;
     }
 </style>
