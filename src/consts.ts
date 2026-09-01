@@ -1,2 +1,2 @@
-export const SITE_TITLE = 'Kitan — Moe-Chiri';
-export const SITE_DESCRIPTION = 'Personal site of Kitan';
+export const SITE_TITLE = 'kitan\'s space travel';
+export const SITE_DESCRIPTION = 'personal blog';
