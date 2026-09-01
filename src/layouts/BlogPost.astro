@@ -23,3 +23,17 @@ function formatDate(date: Date) {
         <slot />
     </div>
 </BasePage>
+
+<style>
+    .prose :global(h2),
+    .prose :global(h3) {
+        display: inline;
+        font-size: 1em;
+        font-weight: 600;
+        color: var(--color);
+    }
+    .prose :global(h2 + p),
+    .prose :global(h3 + p) {
+        display: inline;
+    }
+</style>
