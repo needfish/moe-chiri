@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <rect width="200" height="200" fill="var(--b, #eee)"/>
-  <line x1="20" y1="20" x2="180" y2="180" stroke="var(--ts, #999)" stroke-width="2"/>
-  <line x1="180" y1="20" x2="20" y2="180" stroke="var(--ts, #999)" stroke-width="2"/>
-</svg>

@@ -14,13 +14,15 @@ slug=$(echo "$title" \
   | sed 's/^-//;s/-$//')
 
 date=$(date +%y%m%d)
-file="src/content/blog/${date}-${slug}.md"
+dir="src/content/blog/${date}-${slug}"
+file="$dir/index.md"
 
-if [ -f "$file" ]; then
-  echo "File already exists: $file"
+if [ -e "$dir" ]; then
+  echo "Folder already exists: $dir"
   exit 1
 fi
 
+mkdir -p "$dir"
 cat > "$file" <<EOF
 ---
 title: "$title"
