@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "new-post": "bash scripts/new-post.sh",
+    "new": "bash scripts/new-post.sh",
     "publish": "bash scripts/deploy.sh"
   },
   "dependencies": {
