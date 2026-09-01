@@ -6,15 +6,15 @@ const posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const byYear = new Map();
+const byYear = new Map<number, Map<number, typeof posts>>();
 for (const post of posts) {
     const d = post.data.pubDate;
     const y = d.getFullYear();
     const m = d.getMonth();
-    if (!byYear.has(y)) byYear.set(y, new Map());
-    const mm = byYear.get(y);
+    const mm = byYear.get(y) ?? new Map();
+    byYear.set(y, mm);
     if (!mm.has(m)) mm.set(m, []);
-    mm.get(m).push(post);
+    mm.get(m)?.push(post);
 }
 ---
 
