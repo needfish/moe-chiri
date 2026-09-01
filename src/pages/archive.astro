@@ -6,8 +6,6 @@ const posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-
-
 const byYear = new Map();
 for (const post of posts) {
     const d = post.data.pubDate;
@@ -23,53 +21,23 @@ for (const post of posts) {
 <BasePage title="Archive — Kitan">
     <h1 class="archive-title">Archive</h1>
     {
-        [...byYear.entries()].map(([year, monthMap]) => (
+        [...byYear.entries()].map(([year, monthMap]) =>
             [...monthMap.entries()].map(([month, monthPosts]) => (
                 <div class="archive-group">
-                    <h2 class="archive-heading">{year}/{String(month + 1).padStart(2, "0")}</h2>
+                    <h2 class="archive-heading">
+                        {year}/{String(month + 1).padStart(2, "0")}
+                    </h2>
                     <ul class="archive-list">
-                        {monthPosts.map(post => (
-                            <li><a href={"/blog/" + post.id + "/"}>{post.data.title}</a></li>
+                        {monthPosts.map((post) => (
+                            <li>
+                                <a href={"/blog/" + post.id + "/"}>
+                                    {post.data.title}
+                                </a>
+                            </li>
                         ))}
                     </ul>
                 </div>
-            ))
-        ))
+            )),
+        )
     }
 </BasePage>
-
-<style>
-    .archive-title {
-        margin-bottom: 1.5rem;
-    }
-    .archive-group + .archive-group {
-        margin-top: 1.25rem;
-    }
-    .archive-heading {
-        font-family: var(--m);
-        font-size: var(--fs-sm);
-        font-weight: var(--fw-b);
-        color: var(--a);
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        margin: 0 0 0.4rem;
-    }
-    .archive-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .archive-list li + li {
-        margin-top: 0.15rem;
-    }
-    .archive-list a {
-        font-size: var(--fs);
-        color: var(--t);
-        text-decoration: none;
-        display: block;
-        padding: 0.15rem 0;
-    }
-    .archive-list a:hover {
-        color: var(--a);
-    }
-</style>

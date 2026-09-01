@@ -1,14 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import BasePage from "../layouts/BasePage.astro";
-import MusicRow from "../components/MusicRow.astro";
 import PostList from "../components/PostList.astro";
 import { SITE_DESCRIPTION } from "../consts";
-
-const musicEntries = (await getCollection("music")).slice(0, 3);
-const posts = (await getCollection("blog"))
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .slice(0, 6);
 ---
 
 <BasePage title="kitan's space travel" description={SITE_DESCRIPTION}>
@@ -23,28 +17,6 @@ const posts = (await getCollection("blog"))
             blog to a RSS feed.
         </p>
     </section>
-
-    {
-        musicEntries.length > 0 && (
-            <section class="section">
-                <h2>Music</h2>
-                <div class="music-list">
-                    {musicEntries.map((entry) => (
-                        <MusicRow
-                            title={entry.data.title}
-                            year={entry.data.year}
-                            image={entry.data.image}
-                            links={entry.data.links}
-                        />
-                    ))}
-                </div>
-                <p class="view-all">
-                    <a href="/music">View all →</a>
-                </p>
-            </section>
-        )
-    }
-
     <section class="section" id="links">
         <h2>Links</h2>
         <ul class="link-list">
@@ -56,38 +28,4 @@ const posts = (await getCollection("blog"))
             <li><a href="https://kitan.moe/rss.xml">RSS</a></li>
         </ul>
     </section>
-
-    <section class="section" id="blog">
-        <h2>Posts</h2>
-        <PostList posts={posts} />
-        <p class="view-all">
-            <a href="/archive">View all →</a>
-        </p>
-    </section>
 </BasePage>
-
-<style>
-    .bio p {
-        margin: 0 0 0.75em;
-    }
-    .bio p:last-child {
-        margin: 0;
-    }
-    .music-list {
-        display: grid;
-        gap: 0.5rem;
-    }
-    .section h2 {
-        font-size: 18px;
-        letter-spacing: normal;
-        text-transform: none;
-    }
-    .link-list {
-        list-style: none;
-    }
-    .view-all {
-        font-family: var(--m);
-        font-size: var(--fs-sm);
-        margin-top: 0.5rem;
-    }
-</style>
