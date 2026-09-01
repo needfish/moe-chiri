@@ -12,7 +12,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "new": "bash scripts/new-post.sh",
-    "publish": "bash scripts/deploy.sh"
+    "publish": "bash scripts/publish.sh"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
