@@ -30,9 +30,14 @@ const { title, description } = Astro.props;
         --color: #fa9442;
     }
     @font-face {
-        font-family: "Kitan Mono Term";
-        src: url("/fonts/KitanMonoTerm-Regular.woff2");
+        font-family: "Messina Serif";
+        src: url("/fonts/MessinaSerif-Regular.woff2");
         font-weight: regular;
+    }
+    @font-face {
+        font-family: "Messina Serif";
+        src: url("/fonts/MessinaSerif-SemiBold.woff2");
+        font-weight: 600;
     }
     body {
         background-color: #222;
@@ -40,7 +45,7 @@ const { title, description } = Astro.props;
         max-width: 80ch;
         margin: 0 auto;
         padding: 1rem 1rem 1rem 1rem;
-        font-family: "Kitan Mono Term", sans-serif;
+        font-family: "Messina Serif", sans-serif;
         text-wrap: balanced;
         font-size: 16px;
     }
