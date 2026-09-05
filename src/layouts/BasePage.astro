@@ -31,17 +31,10 @@ const { title, description } = Astro.props;
     }
     @font-face {
       font-display: swap;
-      font-family: 'Noto Sans Mono';
+      font-family: 'Droid Sans Mono';
       font-style: normal;
       font-weight: 400;
-      src: url('../fonts/noto-sans-mono-v37-latin_vietnamese-regular.woff2') format('woff2');
-    }
-    @font-face {
-      font-display: swap;
-      font-family: 'Noto Sans Mono';
-      font-style: normal;
-      font-weight: 600;
-      src: url('../fonts/noto-sans-mono-v37-latin_vietnamese-600.woff2') format('woff2');
+      src: url('../fonts/droid-sans-mono.woff2') format('woff2');
     }
     body {
         background-color: #222;
@@ -49,7 +42,7 @@ const { title, description } = Astro.props;
         max-width: 80ch;
         margin: 0 auto;
         padding: 1rem 1rem 1rem 1rem;
-        font-family: 'Noto Sans Mono', sans-serif;
+        font-family: 'Droid Sans Mono', sans-serif;
         text-wrap: balanced;
         font-size: 16px;
         line-height: 1.6;
