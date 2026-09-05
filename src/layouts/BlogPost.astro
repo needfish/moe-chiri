@@ -2,9 +2,12 @@
 import type { CollectionEntry } from "astro:content";
 import BasePage from "./BasePage.astro";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">["data"] & {
+    prev?: CollectionEntry<"blog">;
+    next?: CollectionEntry<"blog">;
+};
 
-const { title, pubDate } = Astro.props;
+const { title, pubDate, prev, next } = Astro.props;
 
 function formatDate(date: Date) {
     const y = date.getFullYear();
@@ -22,6 +25,10 @@ function formatDate(date: Date) {
     <div class="prose">
         <slot />
     </div>
+    <nav class="post-nav">
+        {prev && <a href={`/blog/${prev.id}/`}>← {prev.data.title}</a>}
+        {next && <a href={`/blog/${next.id}/`}>{next.data.title} →</a>}
+    </nav>
 </BasePage>
 
 <style>
@@ -35,5 +42,11 @@ function formatDate(date: Date) {
     .prose :global(h2 + p),
     .prose :global(h3 + p) {
         display: inline;
+    }
+    .post-nav {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 2rem;
     }
 </style>
