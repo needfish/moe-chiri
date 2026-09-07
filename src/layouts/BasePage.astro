@@ -31,22 +31,31 @@ const { title, description } = Astro.props;
     }
     @font-face {
       font-display: swap;
-      font-family: 'Noto Sans';
+      font-family: 'Inter';
       font-style: normal;
-      font-weight: 400;
-      src: url('../fonts/noto-sans-regular.woff2') format('woff2');
+      font-weight: 100 900;
+      src: url('../fonts/inter-variable.woff2') format('woff2-variations');
     }
     body {
         background-color: #222;
         color: #ccc;
-        max-width: 80ch;
-        margin: 0 auto;
-        padding: 1rem 1rem 1rem 1rem;
-        font-family: 'Noto Sans', sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100svh;
+        font-family: 'Inter', sans-serif;
+        font-feature-settings: 'cv05' 1, 'cv08' 1;
         text-wrap: balanced;
         font-size: 16px;
         line-height: 1.6;
     }
+      body > * {
+       width: 100%;
+       max-width: 80ch;
+       margin: 1rem auto 0;
+       padding-inline: 1rem;
+       box-sizing: border-box;
+    }
+    main.page { flex: 1; }
     a {
         color: var(--color);
         text-decoration: none;
