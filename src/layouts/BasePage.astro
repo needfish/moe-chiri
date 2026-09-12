@@ -17,11 +17,13 @@ const { title, description } = Astro.props;
         <BaseHead {title} {description} />
     </head>
     <body>
-        <Header />
-        <main class="page">
-            <slot />
-        </main>
-        <Footer />
+        <div class="frost">
+            <Header />
+            <main class="page">
+                <slot />
+            </main>
+            <Footer />
+        </div>
     </body>
 </html>
 
@@ -72,13 +74,22 @@ const { title, description } = Astro.props;
       body > * {
        width: 100%;
        max-width: var(--page-width);
-       margin: 1rem auto 0;
-       padding-inline: 1rem;
+       margin: 0 auto;
        box-sizing: border-box;
+    }
+    .frost {
+       padding: 1rem 0;
        background: rgba(10, 10, 10, 0.75);
        -webkit-backdrop-filter: blur(28px) saturate(1.2);
        backdrop-filter: blur(28px) saturate(1.2);
        border-radius: 1rem;
+       overflow: hidden;
+    }
+    .frost > * {
+       width: 100%;
+       max-width: none;
+       padding-inline: 1rem;
+       box-sizing: border-box;
     }
     main.page { flex: 1; }
     a {
