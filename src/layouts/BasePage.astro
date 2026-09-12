@@ -53,7 +53,13 @@ const { title, description } = Astro.props;
     }
     body {
       margin: 0;
-      background-color: #222;
+      background-image: url('/wallpaper-yellow.webp'),
+        url('/wallpaper-green.webp'),
+        url('/wallpaper-red-alt.webp'),
+        url('/wallpaper-red.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       color: #ccc;
       display: flex;
       flex-direction: column;
@@ -69,6 +75,10 @@ const { title, description } = Astro.props;
        margin: 1rem auto 0;
        padding-inline: 1rem;
        box-sizing: border-box;
+       background: rgba(10, 10, 10, 0.75);
+       -webkit-backdrop-filter: blur(28px) saturate(1.2);
+       backdrop-filter: blur(28px) saturate(1.2);
+       border-radius: 1rem;
     }
     main.page { flex: 1; }
     a {
