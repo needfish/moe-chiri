@@ -32,23 +32,6 @@ function formatDate(date: Date) {
 </BasePage>
 
 <style>
-    @font-face {
-        font-display: swap;
-        font-family: 'MD IO Trial';
-        font-style: normal;
-        font-weight: 400;
-        src: url('../fonts/md-io-regular.otf') format('opentype');
-    }
-    @font-face {
-        font-display: swap;
-        font-family: 'MD IO Trial';
-        font-style: normal;
-        font-weight: 500;
-        src: url('../fonts/md-io-medium.otf') format('opentype');
-    }
-    h1 {
-        font-family: 'MD IO Trial', sans-serif;
-    }
     .prose :global(h2),
     .prose :global(h3) {
         display: inline;
@@ -65,9 +48,11 @@ function formatDate(date: Date) {
     }
     .post-nav {
         display: flex;
-        justify-content: space-between;
         gap: 1rem;
         margin-top: 2rem;
+    }
+    .post-nav :global(a:last-child) {
+        margin-left: auto;
     }
     
 </style>

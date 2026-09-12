@@ -34,24 +34,17 @@ const { title, description } = Astro.props;
     }
     @font-face {
       font-display: swap;
-      font-family: 'MD UI Trial';
+      font-family: 'Kitan Mono Term';
       font-style: normal;
       font-weight: 400;
-      src: url('../fonts/md-ui-regular.otf') format('opentype');
+      src: url('../fonts/kitan-mono-term-regular.ttf') format('truetype');
     }
     @font-face {
       font-display: swap;
-      font-family: 'MD UI Trial';
-      font-style: normal;
-      font-weight: 500;
-      src: url('../fonts/md-ui-medium.otf') format('opentype');
-    }
-    @font-face {
-      font-display: swap;
-      font-family: 'MD UI Trial';
+      font-family: 'Kitan Mono Term';
       font-style: normal;
       font-weight: 700;
-      src: url('../fonts/md-ui-bold.otf') format('opentype');
+      src: url('../fonts/kitan-mono-term-bold.ttf') format('truetype');
     }
     body {
       margin: 0;
@@ -66,7 +59,8 @@ const { title, description } = Astro.props;
       display: flex;
       flex-direction: column;
       min-height: 100svh;
-      font-family: 'MD UI Trial', sans-serif;
+      font-family: 'Kitan Mono Term', monospace;
+      letter-spacing: -0.04em;
       text-wrap: balanced;
       font-size: 16px;
       line-height: 1.6;
