@@ -60,9 +60,11 @@ const { title, description } = Astro.props;
   body::before {
     content: '';
     position: fixed;
-    inset: 0;
+    inset: 0 0 -40vh;
     z-index: -1;
     background: url('/test-bg/gracile/gracile-earth-debris-field-5640x2400.webp') center / cover;
+    animation: bg-parallax linear both;
+    animation-timeline: scroll(root);
   }
   body > * {
     width: 100%;
@@ -76,17 +78,17 @@ const { title, description } = Astro.props;
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 1rem 0 5rem;
+    padding: 1rem 0 1rem;
   }
   .frost::before {
     content: '';
     position: absolute;
-    inset: 0 -8rem;
+    inset: 0 -12rem;
     background: rgba(10, 10, 10, 0.75);
     -webkit-backdrop-filter: blur(28px) saturate(1.2);
     backdrop-filter: blur(28px) saturate(1.2);
-    -webkit-mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.16) 2rem, rgba(0, 0, 0, 0.5) 4rem, rgba(0, 0, 0, 0.84) 6rem, #000 8rem, #000 calc(100% - 8rem), rgba(0, 0, 0, 0.84) calc(100% - 6rem), rgba(0, 0, 0, 0.5) calc(100% - 4rem), rgba(0, 0, 0, 0.16) calc(100% - 2rem), transparent), linear-gradient(to top, transparent, #000 4rem);
-    mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.16) 2rem, rgba(0, 0, 0, 0.5) 4rem, rgba(0, 0, 0, 0.84) 6rem, #000 8rem, #000 calc(100% - 8rem), rgba(0, 0, 0, 0.84) calc(100% - 6rem), rgba(0, 0, 0, 0.5) calc(100% - 4rem), rgba(0, 0, 0, 0.16) calc(100% - 2rem), transparent), linear-gradient(to top, transparent, #000 4rem);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.04) 1.5rem, rgba(0, 0, 0, 0.16) 3rem, rgba(0, 0, 0, 0.32) 4.5rem, rgba(0, 0, 0, 0.5) 6rem, rgba(0, 0, 0, 0.68) 7.5rem, rgba(0, 0, 0, 0.84) 9rem, rgba(0, 0, 0, 0.96) 10.5rem, #000 12rem, #000 calc(100% - 12rem), rgba(0, 0, 0, 0.96) calc(100% - 10.5rem), rgba(0, 0, 0, 0.84) calc(100% - 9rem), rgba(0, 0, 0, 0.68) calc(100% - 7.5rem), rgba(0, 0, 0, 0.5) calc(100% - 6rem), rgba(0, 0, 0, 0.32) calc(100% - 4.5rem), rgba(0, 0, 0, 0.16) calc(100% - 3rem), rgba(0, 0, 0, 0.04) calc(100% - 1.5rem), transparent);
+    mask-image: linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.04) 1.5rem, rgba(0, 0, 0, 0.16) 3rem, rgba(0, 0, 0, 0.32) 4.5rem, rgba(0, 0, 0, 0.5) 6rem, rgba(0, 0, 0, 0.68) 7.5rem, rgba(0, 0, 0, 0.84) 9rem, rgba(0, 0, 0, 0.96) 10.5rem, #000 12rem, #000 calc(100% - 12rem), rgba(0, 0, 0, 0.96) calc(100% - 10.5rem), rgba(0, 0, 0, 0.84) calc(100% - 9rem), rgba(0, 0, 0, 0.68) calc(100% - 7.5rem), rgba(0, 0, 0, 0.5) calc(100% - 6rem), rgba(0, 0, 0, 0.32) calc(100% - 4.5rem), rgba(0, 0, 0, 0.16) calc(100% - 3rem), rgba(0, 0, 0, 0.04) calc(100% - 1.5rem), transparent);
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
     pointer-events: none;
@@ -99,6 +101,10 @@ const { title, description } = Astro.props;
     box-sizing: border-box;
   }
   main.page { flex: 1; }
+
+  @keyframes bg-parallax {
+    to { transform: translateY(-40vh); }
+  }
 
   a {
     color: var(--color);
