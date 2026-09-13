@@ -63,7 +63,7 @@ const { title, description } = Astro.props;
     display: flex;
     flex-direction: column;
     color: #ccc;
-    font: 400 16px/1.6 'Kitan Mono Term', monospace;
+    font: 400 clamp(15px, 0.7vw + 12.4px, 16px)/1.6 'Kitan Mono Term', monospace;
     letter-spacing: -0.05em;
     text-wrap: balanced;
     overflow-x: clip;
@@ -127,6 +127,6 @@ const { title, description } = Astro.props;
     text-decoration: none;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-size: 16px;
+    font-size: 1em;
   }
 </style>
