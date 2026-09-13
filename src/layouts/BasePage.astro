@@ -75,7 +75,7 @@ const { title, description } = Astro.props;
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 1rem 0;
+    padding: 1rem 0 5rem;
   }
   .frost::before {
     content: '';
@@ -84,7 +84,10 @@ const { title, description } = Astro.props;
     background: rgba(10, 10, 10, 0.75);
     -webkit-backdrop-filter: blur(28px) saturate(1.2);
     backdrop-filter: blur(28px) saturate(1.2);
-    mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.16) 2rem, rgba(0, 0, 0, 0.5) 4rem, rgba(0, 0, 0, 0.84) 6rem, #000 8rem, #000 calc(100% - 8rem), rgba(0, 0, 0, 0.84) calc(100% - 6rem), rgba(0, 0, 0, 0.5) calc(100% - 4rem), rgba(0, 0, 0, 0.16) calc(100% - 2rem), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.16) 2rem, rgba(0, 0, 0, 0.5) 4rem, rgba(0, 0, 0, 0.84) 6rem, #000 8rem, #000 calc(100% - 8rem), rgba(0, 0, 0, 0.84) calc(100% - 6rem), rgba(0, 0, 0, 0.5) calc(100% - 4rem), rgba(0, 0, 0, 0.16) calc(100% - 2rem), transparent), linear-gradient(to top, transparent, #000 4rem);
+    mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.16) 2rem, rgba(0, 0, 0, 0.5) 4rem, rgba(0, 0, 0, 0.84) 6rem, #000 8rem, #000 calc(100% - 8rem), rgba(0, 0, 0, 0.84) calc(100% - 6rem), rgba(0, 0, 0, 0.5) calc(100% - 4rem), rgba(0, 0, 0, 0.16) calc(100% - 2rem), transparent), linear-gradient(to top, transparent, #000 4rem);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
     pointer-events: none;
   }
   .frost > * {
