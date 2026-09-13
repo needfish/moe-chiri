@@ -29,84 +29,78 @@ const { title, description } = Astro.props;
 </html>
 
 <style is:global>
-    :root {
-        --color: #fa9442;
-        --page-width: 42rem;
-    }
-    @font-face {
-      font-display: swap;
-      font-family: 'Kitan Mono Term';
-      font-style: normal;
-      font-weight: 400;
-      src: url('/fonts/kitan-mono-term-regular.woff2') format('woff2');
-    }
-    @font-face {
-      font-display: swap;
-      font-family: 'Kitan Mono Term';
-      font-style: normal;
-      font-weight: 700;
-      src: url('/fonts/kitan-mono-term-bold.woff2') format('woff2');
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: url('/test-bg/gracile/gracile-earth-debris-field-5640x2400.webp') center / cover;
-    }
-    body {
-      margin: 0;
-      color: #ccc;
-      display: flex;
-      flex-direction: column;
-      font-family: 'Kitan Mono Term', monospace;
-      letter-spacing: -0.04em;
-      text-wrap: balanced;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-      body > * {
-       width: 100%;
-       max-width: var(--page-width);
-       margin: 0 auto;
-       box-sizing: border-box;
-    }
-    .frost {
-       position: relative;
-       display: flex;
-       flex-direction: column;
-       flex: 1;
-       padding: 1rem 0;
-    }
-    .frost::before {
-       content: "";
-       position: absolute;
-       inset: 0 -8rem;
-       background: rgba(10, 10, 10, 0.75);
-       -webkit-backdrop-filter: blur(28px) saturate(1.2);
-       backdrop-filter: blur(28px) saturate(1.2);
-       -webkit-mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.16) 2rem, rgba(0, 0, 0, 0.5) 4rem, rgba(0, 0, 0, 0.84) 6rem, #000 8rem, #000 calc(100% - 8rem), rgba(0, 0, 0, 0.84) calc(100% - 6rem), rgba(0, 0, 0, 0.5) calc(100% - 4rem), rgba(0, 0, 0, 0.16) calc(100% - 2rem), transparent);
-       mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.16) 2rem, rgba(0, 0, 0, 0.5) 4rem, rgba(0, 0, 0, 0.84) 6rem, #000 8rem, #000 calc(100% - 8rem), rgba(0, 0, 0, 0.84) calc(100% - 6rem), rgba(0, 0, 0, 0.5) calc(100% - 4rem), rgba(0, 0, 0, 0.16) calc(100% - 2rem), transparent);
-       pointer-events: none;
-    }
-    .frost > * {
-       position: relative;
-       width: 100%;
-       max-width: none;
-       padding-inline: 1rem;
-       box-sizing: border-box;
-    }
-    main.page { flex: 1; }
-    a {
-        color: var(--color);
-        text-decoration: none;
-    }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-size: 16px;
-    }
+  :root {
+    --color: #fa9442;
+    --page-width: 42rem;
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Kitan Mono Term';
+    font-weight: 400;
+    src: url('/fonts/kitan-mono-term-regular.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Kitan Mono Term';
+    font-weight: 700;
+    src: url('/fonts/kitan-mono-term-bold.woff2') format('woff2');
+  }
+
+  body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    color: #ccc;
+    font: 400 16px/1.6 'Kitan Mono Term', monospace;
+    letter-spacing: -0.04em;
+    text-wrap: balanced;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: url('/test-bg/gracile/gracile-earth-debris-field-5640x2400.webp') center / cover;
+  }
+  body > * {
+    width: 100%;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .frost {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1rem 0;
+  }
+  .frost::before {
+    content: '';
+    position: absolute;
+    inset: 0 -8rem;
+    background: rgba(10, 10, 10, 0.75);
+    -webkit-backdrop-filter: blur(28px) saturate(1.2);
+    backdrop-filter: blur(28px) saturate(1.2);
+    mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.16) 2rem, rgba(0, 0, 0, 0.5) 4rem, rgba(0, 0, 0, 0.84) 6rem, #000 8rem, #000 calc(100% - 8rem), rgba(0, 0, 0, 0.84) calc(100% - 6rem), rgba(0, 0, 0, 0.5) calc(100% - 4rem), rgba(0, 0, 0, 0.16) calc(100% - 2rem), transparent);
+    pointer-events: none;
+  }
+  .frost > * {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    padding-inline: 1rem;
+    box-sizing: border-box;
+  }
+  main.page { flex: 1; }
+
+  a {
+    color: var(--color);
+    text-decoration: none;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 16px;
+  }
 </style>
