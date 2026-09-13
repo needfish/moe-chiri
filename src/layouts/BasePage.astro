@@ -15,6 +15,7 @@ const { title, description } = Astro.props;
 <html lang="en">
     <head>
         <BaseHead {title} {description} />
+        <link rel="preload" href="/fonts/kitan-mono-term-regular.woff2" as="font" type="font/woff2" crossorigin>
     </head>
     <body>
         <div class="frost">
@@ -37,21 +38,18 @@ const { title, description } = Astro.props;
       font-family: 'Kitan Mono Term';
       font-style: normal;
       font-weight: 400;
-      src: url('../fonts/kitan-mono-term-regular.ttf') format('truetype');
+      src: url('/fonts/kitan-mono-term-regular.woff2') format('woff2');
     }
     @font-face {
       font-display: swap;
       font-family: 'Kitan Mono Term';
       font-style: normal;
       font-weight: 700;
-      src: url('../fonts/kitan-mono-term-bold.ttf') format('truetype');
+      src: url('/fonts/kitan-mono-term-bold.woff2') format('woff2');
     }
     body {
       margin: 0;
-      background-image: url('/wallpaper-yellow.webp'),
-        url('/wallpaper-green.webp'),
-        url('/wallpaper-red-alt.webp'),
-        url('/wallpaper-red.webp');
+      background-image: url('/wallpaper-yellow.webp');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -72,13 +70,25 @@ const { title, description } = Astro.props;
        box-sizing: border-box;
     }
     .frost {
+       position: relative;
+       display: flex;
+       flex-direction: column;
+       flex: 1;
        padding: 1rem 0;
+    }
+    .frost::before {
+       content: "";
+       position: absolute;
+       inset: 0 -8rem;
        background: rgba(10, 10, 10, 0.75);
        -webkit-backdrop-filter: blur(28px) saturate(1.2);
        backdrop-filter: blur(28px) saturate(1.2);
-       overflow: hidden;
+       -webkit-mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.16) 2rem, rgba(0, 0, 0, 0.5) 4rem, rgba(0, 0, 0, 0.84) 6rem, #000 8rem, #000 calc(100% - 8rem), rgba(0, 0, 0, 0.84) calc(100% - 6rem), rgba(0, 0, 0, 0.5) calc(100% - 4rem), rgba(0, 0, 0, 0.16) calc(100% - 2rem), transparent);
+       mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.16) 2rem, rgba(0, 0, 0, 0.5) 4rem, rgba(0, 0, 0, 0.84) 6rem, #000 8rem, #000 calc(100% - 8rem), rgba(0, 0, 0, 0.84) calc(100% - 6rem), rgba(0, 0, 0, 0.5) calc(100% - 4rem), rgba(0, 0, 0, 0.16) calc(100% - 2rem), transparent);
+       pointer-events: none;
     }
     .frost > * {
+       position: relative;
        width: 100%;
        max-width: none;
        padding-inline: 1rem;
