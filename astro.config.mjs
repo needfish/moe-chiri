@@ -15,6 +15,7 @@ export default defineConfig({
       theme: 'ayu-dark',
     },
     processor: unified({
+      smartypants: false,
       rehypePlugins: [rehypeFigure, rehypeRuninPeriod],
     }),
   },
