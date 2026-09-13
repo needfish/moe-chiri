@@ -25,6 +25,17 @@ const { title, description } = Astro.props;
             </main>
             <Footer />
         </div>
+        <script>
+            if (!CSS.supports('animation-timeline: scroll()')) {
+                let cap = innerHeight * 0.4;
+                const bg = () => {
+                    document.body.style.setProperty('--bg-shift', -Math.max(0, Math.min(scrollY * 0.25, cap)) + 'px');
+                };
+                addEventListener('scroll', bg, { passive: true });
+                addEventListener('orientationchange', () => { cap = innerHeight * 0.4; bg(); }, { passive: true });
+                bg();
+            }
+        </script>
     </body>
 </html>
 
@@ -60,11 +71,16 @@ const { title, description } = Astro.props;
   body::before {
     content: '';
     position: fixed;
-    inset: 0 0 -40vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(100lvh + 40svh);
     z-index: -1;
     background: url('/test-bg/gracile/gracile-earth-debris-field-5640x2400.webp') center / cover;
     animation: bg-parallax linear both;
     animation-timeline: scroll(root);
+    animation-range: 0 160svh;
+    transform: translateY(var(--bg-shift, 0px));
   }
   body > * {
     width: 100%;
@@ -103,7 +119,7 @@ const { title, description } = Astro.props;
   main.page { flex: 1; }
 
   @keyframes bg-parallax {
-    to { transform: translateY(-40vh); }
+    to { transform: translateY(-40svh); }
   }
 
   a {
