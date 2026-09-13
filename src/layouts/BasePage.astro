@@ -47,12 +47,15 @@ const { title, description } = Astro.props;
       font-weight: 700;
       src: url('/fonts/kitan-mono-term-bold.woff2') format('woff2');
     }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: url('/wallpaper-yellow.webp') center / cover;
+    }
     body {
       margin: 0;
-      background-image: url('/wallpaper-yellow.webp');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
       color: #ccc;
       display: flex;
       flex-direction: column;
