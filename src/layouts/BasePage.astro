@@ -15,7 +15,7 @@ const { title, description } = Astro.props;
 <html lang="en">
     <head>
         <BaseHead {title} {description} />
-        <link rel="preload" href="/fonts/kitan-mono-t-regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/fonts/kitan-mono-t-medium.woff2" as="font" type="font/woff2" crossorigin>
     </head>
     <body>
         <div class="frost">
@@ -49,12 +49,21 @@ const { title, description } = Astro.props;
     font-display: swap;
     font-family: 'Kitan Mono T';
     font-weight: 400;
+    font-style: normal;
     src: url('/fonts/kitan-mono-t-regular.woff2') format('woff2');
   }
   @font-face {
     font-display: swap;
     font-family: 'Kitan Mono T';
+    font-weight: 500;
+    font-style: normal;
+    src: url('/fonts/kitan-mono-t-medium.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Kitan Mono T';
     font-weight: 700;
+    font-style: normal;
     src: url('/fonts/kitan-mono-t-bold.woff2') format('woff2');
   }
 
@@ -63,7 +72,7 @@ const { title, description } = Astro.props;
     display: flex;
     flex-direction: column;
     color: #ccc;
-    font: 400 clamp(15px, 0.7vw + 12.4px, 16px)/1.6 'Kitan Mono T', monospace;
+    font: 500 clamp(15px, 0.7vw + 12.4px, 16px)/1.6 'Kitan Mono T', monospace;
     letter-spacing: -0.05em;
     text-wrap: balanced;
     overflow-x: clip;
