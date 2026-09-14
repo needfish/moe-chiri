@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import "./plex-jp.css";
 
 interface Props {
     title: string;
@@ -72,10 +73,16 @@ const { title, description } = Astro.props;
     display: flex;
     flex-direction: column;
     color: #ccc;
-    font: 500 clamp(15px, 0.5vw + 13px, 17px)/1.6 'Kitan Mono T', monospace;
+    font: 500 clamp(15px, 0.5vw + 13px, 17px)/1.6 'Kitan Mono T', 'IBM Plex Sans JP', monospace;
     letter-spacing: -0.05em;
     text-wrap: balance;
     overflow-x: clip;
+  }
+  :lang(ja) {
+    letter-spacing: 0;
+  }
+  :lang(ja) :not(.l) {
+    letter-spacing: -0.05em;
   }
   body::before {
     content: '';
