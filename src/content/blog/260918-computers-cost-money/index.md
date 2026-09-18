@@ -34,11 +34,11 @@ We pay through spending more time and attention than needed on these platforms, 
 I don't think I can put a value to my access to YouTube.
 I pay for YouTube Premium (it's cheaper with family), and I think having the world's knowledge and entertainment without ads is a privilege very much worth the money.
 
-The evolution of *enshittification* does mean that balance has been shifted, now that the Internet has coalesced around a few mega companies.
+However, now that the Internet has coalesced around a few mega companies, *enshittification* ensued.
 *Both paying and free users* get worse treatment, and I think people are feeling it.
 
 Running and hosting things on computers cost money, but it has been so low to the point of negligible, for the benefit such operation brings.
-The balance has shifted though -- squeezing revenue makes using Internet services increasingly more hostile.
+The cost/value balance has shifted deeply - squeezing revenue makes using Internet services increasingly more hostile.
 It's like a kind of negative externality, a pollution of public cognition.
 
 That was a bit off topic.
