@@ -11,18 +11,18 @@ import { SITE_DESCRIPTION } from "../consts";
     <section class="section" id="links">
         <ul class="link-list">
             <li>
-                <a href="https://bsky.app/profile/kitan.moe">[ bluesky ]</a>
+                <a href="https://bsky.app/profile/kitan.moe">_bluesky</a>
                 <span class="link-comment">// you can contact me here</span>
             </li>
-            <li><a href="https://github.com/needfish">[ github ]</a></li>
+            <li><a href="https://github.com/needfish">_github</a></li>
             <li>
-                <button class="rss-copy" data-url="https://kitan.moe/rss.xml">[ rss ]</button> <span class="link-comment">// copy feed url</span>
+                <button class="rss-copy" data-url="https://kitan.moe/rss.xml">_rss</button> <span class="link-comment">// copy feed url</span>
             </li>
         </ul>
     </section>
     <section class="section" id="colophon">
-        <p>background from <a href="https://x.com/gracile_jp">@gracile_jp</a></p>
-        <p>typeface is a custom build of <a href="https://typeof.net/Iosevka/">Iosevka</a></p>
+        <p>background: <a href="https://x.com/gracile_jp">@gracile_jp</a></p>
+        <p>typeface: custom build of <a href="https://typeof.net/Iosevka/">iosevka</a></p>
     </section>
 </BasePage>
 
@@ -44,13 +44,17 @@ import { SITE_DESCRIPTION } from "../consts";
     .link-comment {
         opacity: 0.55;
     }
+
+    #colophon p {
+        margin: 0;
+    }
 </style>
 <script>
     document.querySelectorAll(".rss-copy").forEach((el) => {
         el.addEventListener("click", async () => {
             await navigator.clipboard.writeText(el.dataset.url!);
             const old = el.textContent;
-            el.textContent = "[ copied ]";
+            el.textContent = "_copied";
             setTimeout(() => (el.textContent = old), 1200);
         });
     });
