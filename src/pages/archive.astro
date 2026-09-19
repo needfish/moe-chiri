@@ -24,7 +24,7 @@ for (const post of posts) {
             [...monthMap.entries()].map(([month, monthPosts]) => (
                 <div class="archive-group">
                     <h2 class="archive-heading">
-                        {String(year).slice(2)}.{String(month + 1).padStart(2, "0")}.*
+                        {String(year).slice(2)}.{String(month + 1).padStart(2, "0")}.
                     </h2>
                     <ul class="archive-list">
                         {monthPosts.map((post) => (
