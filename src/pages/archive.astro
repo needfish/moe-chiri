@@ -29,7 +29,7 @@ for (const post of posts) {
                     <ul class="archive-list">
                         {monthPosts.map((post) => (
                             <li>
-                                [{String(post.data.pubDate.getUTCDate()).padStart(2, "0")}]
+                                <span class="archive-date">[{String(post.data.pubDate.getUTCDate()).padStart(2, "0")}]</span>
                                 <a href={"/blog/" + post.id + "/"}>
                                     {post.data.title}
                                 </a>
@@ -56,5 +56,9 @@ for (const post of posts) {
     .archive-heading {
         font-weight: normal;
         margin-bottom: 0;
+    }
+
+    .archive-date {
+        opacity: 0.55;
     }
 </style>
