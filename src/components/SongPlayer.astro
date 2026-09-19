@@ -1,13 +1,15 @@
-<div class="song">
-    <span id="now-playing" hidden></span>
-    <div class="pad">
-        <button id="song-btn" aria-label="play song">
+<div class="player" transition:persist="song-player">
+    <div class="song">
+        <span id="now-playing" hidden></span>
+        <div class="pad">
+            <button id="song-btn" aria-label="play song">
             <svg class="orbit" viewBox="0 0 100 100" fill="none" aria-hidden="true"><circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="3" stroke-dasharray="250 39" transform="rotate(118 50 50)"/></svg>
             <svg id="song-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
         </button>
+        </div>
     </div>
+    <div id="yt-player"></div>
 </div>
-<div id="yt-player"></div>
 
 <style>
     .song {
@@ -97,33 +99,37 @@
         play: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>',
         pause: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3.5v14H7zm7 0h3v14h-3z"/></svg>',
     };
-    let player: YT.Player | undefined;
-    const btn = document.getElementById('song-btn')!;
+    const btn = document.getElementById('song-btn') as HTMLButtonElement;
     const icon = document.getElementById('song-icon')!;
     const label = document.getElementById('now-playing')!;
-    btn.addEventListener('click', () => {
-        if (!player) {
-            player = new YT.Player('yt-player', {
-                videoId: '2nhB7Mf46xI',
-                playerVars: { playsinline: 1 },
-                events: {
-                    onReady: () => player!.playVideo(),
-                    onStateChange: (e) => {
-                        const playing = e.data === YT.PlayerState.PLAYING;
-                        icon.innerHTML = playing ? icons.pause : icons.play;
-                        btn.classList.toggle('playing', playing);
-                        if (playing) {
-                            const d = player!.getVideoData();
-                            label.innerHTML = `now playing:<br><a href="https://youtu.be/2nhB7Mf46xI" target="_blank" rel="noopener">${d.author} — ${d.title}</a>`;
-                        }
-                        label.hidden = !playing;
+    if (!btn.dataset.bound) {
+        btn.dataset.bound = '1';
+        btn.addEventListener('click', () => {
+            const w = window as any;
+            if (!w.player) {
+                w.player = new YT.Player('yt-player', {
+                    videoId: 'xetCxo0bMxs',
+                    playerVars: { playsinline: 1 },
+                    events: {
+                        onReady: () => (window as any).player!.playVideo(),
+                        onStateChange: (e: YT.OnStateChangeEvent) => {
+                            const player = (window as any).player as YT.Player;
+                            const playing = e.data === YT.PlayerState.PLAYING;
+                            icon.innerHTML = playing ? icons.pause : icons.play;
+                            btn.classList.toggle('playing', playing);
+                            if (playing) {
+                                const d = player.getVideoData();
+                                label.innerHTML = `now playing:<br><a href="https://youtu.be/xetCxo0bMxs" target="_blank" rel="noopener">${d.title}</a>`;
+                            }
+                            label.hidden = !playing;
+                        },
                     },
-                },
-            });
-        } else {
-            player.getPlayerState() === YT.PlayerState.PLAYING
-                ? player.pauseVideo()
-                : player.playVideo();
-        }
-    });
+                });
+            } else {
+                w.player.getPlayerState() === YT.PlayerState.PLAYING
+                    ? w.player.pauseVideo()
+                    : w.player.playVideo();
+            }
+        });
+    }
 </script>
