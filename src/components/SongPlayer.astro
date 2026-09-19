@@ -1,6 +1,6 @@
 <div class="player" transition:persist="song-player">
     <div class="song">
-        <span id="now-playing" hidden></span>
+        <span id="now-playing"></span>
         <div class="pad">
             <button id="song-btn" aria-label="play song">
             <svg class="orbit" viewBox="0 0 100 100" fill="none" aria-hidden="true"><circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="3" stroke-dasharray="250 39" transform="rotate(118 50 50)"/></svg>
@@ -67,6 +67,16 @@
         max-width: 24rem;
         overflow: hidden;
         text-align: right;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease, translate 0.4s ease;
+        translate: 0 0.4em;
+    }
+
+    #now-playing.show {
+        opacity: 1;
+        pointer-events: auto;
+        translate: 0 0;
     }
 
     @media (max-width: 40rem) {
@@ -119,9 +129,10 @@
                             btn.classList.toggle('playing', playing);
                             if (playing) {
                                 const d = player.getVideoData();
-                                label.innerHTML = `now playing:<br><a href="https://youtu.be/xetCxo0bMxs" target="_blank" rel="noopener">${d.title}</a>`;
+                                const text = `now playing:<br><a href="https://youtu.be/xetCxo0bMxs" target="_blank" rel="noopener">${d.title}</a>`;
+                                if (label.innerHTML !== text) label.innerHTML = text;
                             }
-                            label.hidden = !playing;
+                            label.classList.toggle('show', playing);
                         },
                     },
                 });
