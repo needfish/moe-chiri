@@ -64,8 +64,7 @@
         min-width: 0;
         max-width: 24rem;
         overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        text-align: right;
     }
 
     @media (max-width: 40rem) {
@@ -76,6 +75,7 @@
 
         #now-playing {
             max-width: 60vw;
+            text-align: left;
         }
     }
 </style>
@@ -114,7 +114,7 @@
                         btn.classList.toggle('playing', playing);
                         if (playing) {
                             const d = player!.getVideoData();
-                            label.innerHTML = `now playing: <a href="https://youtu.be/2nhB7Mf46xI" target="_blank" rel="noopener">${d.author} — ${d.title}</a>`;
+                            label.innerHTML = `now playing:<br><a href="https://youtu.be/2nhB7Mf46xI" target="_blank" rel="noopener">${d.author} — ${d.title}</a>`;
                         }
                         label.hidden = !playing;
                     },
