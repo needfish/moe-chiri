@@ -1,7 +1,5 @@
 <header>
-    <div class="header-top">
-        <span class="site-title">kitan's space travel</span>
-    </div>
+    <span class="site-title">kitan's space travel</span>
     <div class="separator">· · ✦ · ·</div>
     <nav>
         <a href="/">_home</a>
@@ -10,6 +8,12 @@
 </header>
 
 <style>
+    header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
     .site-title::after {
         content: "▌";
         margin-left: 0.25ch;

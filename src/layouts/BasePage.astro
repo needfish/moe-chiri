@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
+import SongPlayer from "../components/SongPlayer.astro";
 import Footer from "../components/Footer.astro";
 import "./noto-jp.css";
 
@@ -20,7 +21,10 @@ const { title, description } = Astro.props;
     </head>
     <body>
         <div class="frost">
-            <Header />
+            <div class="top">
+                <Header />
+                <SongPlayer />
+            </div>
             <main class="page">
                 <slot />
             </main>
@@ -133,6 +137,18 @@ const { title, description } = Astro.props;
     box-sizing: border-box;
   }
   main.page { flex: 1; }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  @media (max-width: 40rem) {
+    .top {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
 
   @keyframes bg-parallax {
     to { transform: translateY(-40svh); }
