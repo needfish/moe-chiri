@@ -24,11 +24,12 @@ for (const post of posts) {
             [...monthMap.entries()].map(([month, monthPosts]) => (
                 <div class="archive-group">
                     <h2 class="archive-heading">
-                        {year}/{String(month + 1).padStart(2, "0")}
+                        {String(year).slice(2)}.{String(month + 1).padStart(2, "0")}.*
                     </h2>
                     <ul class="archive-list">
                         {monthPosts.map((post) => (
                             <li>
+                                [{String(post.data.pubDate.getUTCDate()).padStart(2, "0")}]
                                 <a href={"/blog/" + post.id + "/"}>
                                     {post.data.title}
                                 </a>
@@ -40,3 +41,20 @@ for (const post of posts) {
         )
     }
 </BasePage>
+
+<style>
+    .archive-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .archive-group + .archive-group {
+        margin-top: 1.5rem;
+    }
+
+    .archive-heading {
+        font-weight: normal;
+        margin-bottom: 0;
+    }
+</style>
