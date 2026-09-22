@@ -10,6 +10,9 @@ import rehypeRuninPeriod from './src/plugins/rehype-runin-period.mjs';
 
 export default defineConfig({
   site: 'https://kitan.moe',
+  build: {
+    inlineStylesheets: 'always',
+  },
   markdown: {
     shikiConfig: {
       theme: 'ayu-dark',
