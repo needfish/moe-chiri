@@ -25,7 +25,7 @@ It does make me wonder about the constraints we have with our time.
 With time taken out of the day for travelling and work, the average person has little time for long-form, engaging entertainment.
 A 30-min anime episode may be consumable, but a full movie can't be done as such.
 
-There is still a rich market for the micro-entertainment for people to consume on the go.
+There is an actively exploitedmarket for the micro-entertainment for people to consume on the go.
 I heard there are studios making mini-dramas that are just that short, and also vertical to be watched on your phone.
 The state of things really did take an odd turn, probably for the worse.
 
