@@ -103,7 +103,6 @@
     }
 </style>
 
-<script is:inline src="https://www.youtube.com/iframe_api"></script>
 <script>
     const icons = {
         play: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>',
@@ -114,32 +113,44 @@
     const label = document.getElementById('now-playing')!;
     if (!btn.dataset.bound) {
         btn.dataset.bound = '1';
+        const createPlayer = () => {
+            (window as any).player = new YT.Player('yt-player', {
+                videoId: 'xetCxo0bMxs',
+                playerVars: { playsinline: 1 },
+                events: {
+                    onReady: () => (window as any).player!.playVideo(),
+                    onStateChange: (e: YT.OnStateChangeEvent) => {
+                        const player = (window as any).player as YT.Player;
+                        const playing = e.data === YT.PlayerState.PLAYING;
+                        icon.innerHTML = playing ? icons.pause : icons.play;
+                        btn.classList.toggle('playing', playing);
+                        if (playing) {
+                            const d = player.getVideoData();
+                            const text = `now playing:<br><a href="https://youtu.be/xetCxo0bMxs" target="_blank" rel="noopener">${d.title}</a>`;
+                            if (label.innerHTML !== text) label.innerHTML = text;
+                        }
+                        label.classList.toggle('show', playing);
+                    },
+                },
+            });
+        };
+        // appends the YouTube IFrame API script once, then runs onReady
+        const loadYouTubeAPI = (onReady: () => void): void => {
+            (window as any).onYouTubeIframeAPIReady = onReady;
+            const tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            document.head.append(tag);
+        };
         btn.addEventListener('click', () => {
             const w = window as any;
-            if (!w.player) {
-                w.player = new YT.Player('yt-player', {
-                    videoId: 'xetCxo0bMxs',
-                    playerVars: { playsinline: 1 },
-                    events: {
-                        onReady: () => (window as any).player!.playVideo(),
-                        onStateChange: (e: YT.OnStateChangeEvent) => {
-                            const player = (window as any).player as YT.Player;
-                            const playing = e.data === YT.PlayerState.PLAYING;
-                            icon.innerHTML = playing ? icons.pause : icons.play;
-                            btn.classList.toggle('playing', playing);
-                            if (playing) {
-                                const d = player.getVideoData();
-                                const text = `now playing:<br><a href="https://youtu.be/xetCxo0bMxs" target="_blank" rel="noopener">${d.title}</a>`;
-                                if (label.innerHTML !== text) label.innerHTML = text;
-                            }
-                            label.classList.toggle('show', playing);
-                        },
-                    },
-                });
-            } else {
+            if (w.player) {
                 w.player.getPlayerState() === YT.PlayerState.PLAYING
                     ? w.player.pauseVideo()
                     : w.player.playVideo();
+            } else if (w.YT?.Player) {
+                createPlayer();
+            } else {
+                loadYouTubeAPI(createPlayer);
             }
         });
     }
