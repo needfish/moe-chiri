@@ -17,6 +17,7 @@ const { title, description } = Astro.props;
     <head>
         <BaseHead {title} {description} />
         <link rel="preload" href="/fonts/kitan-mono-t-medium.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/test-bg/gracile/gracile-earth-debris-field-2560.webp" as="image" fetchpriority="high">
     </head>
     <body>
         <div class="frost">
@@ -95,7 +96,7 @@ const { title, description } = Astro.props;
     right: 0;
     height: calc(100lvh + 40svh);
     z-index: -1;
-    background: url('/test-bg/gracile/gracile-earth-debris-field-5640x2400.webp') center / cover;
+    background: url('/test-bg/gracile/gracile-earth-debris-field-2560.webp') center / cover;
     animation: bg-parallax linear both;
     animation-timeline: scroll(root);
     animation-range: 0 160svh;
