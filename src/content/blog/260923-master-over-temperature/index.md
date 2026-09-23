@@ -18,7 +18,7 @@ Before the aircon, there existed many tricks that people use to adapt and evolve
 Hot countries wear white outfits to avoid absorbing radiation heat, built inner courtyards in their houses with water fountains, and constructed air towers that suck in cool air.
 Air conditioning, at the cost of electricity (and pushing the hot air to be someone else's problem), brute forced the problem.
 
-# Hot climate architecture
+## Hot climate architecture
 Traditional decisions made to adapt to hot climates have some things in common across countries and cultures:
 Block out the sun, but let some light in through smaller holes.
 Keep slanted panels that shield sunlight but invites the cool wind in.
@@ -29,7 +29,7 @@ Tall buildings can get a lot of strong wind, at the cost of unsafe open windows.
 Thus, the only choice is to control the interior climate with global air conditioning.
 I do think it is a massive inefficiency and waste, but that's how modern looking buildings go.
 
-# The Fridge and the Aircon
+## The Fridge and the Aircon
 I think these are modern day magic, if anything.
 Being able to turn your room cool on demand is a privilege not everyone possesses.
 Having ice cubes in my water is a happiness, when I consider it.
