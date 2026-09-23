@@ -1,0 +1,128 @@
+  :root {
+    --color: #fa9442;
+    --page-width: 80ch;
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Kitan Mono T';
+    font-weight: 400;
+    font-style: normal;
+    src: url('/fonts/kitan-mono-t-regular.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Kitan Mono T';
+    font-weight: 500;
+    font-style: normal;
+    src: url('/fonts/kitan-mono-t-medium.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Kitan Mono T';
+    font-weight: 700;
+    font-style: normal;
+    src: url('/fonts/kitan-mono-t-bold.woff2') format('woff2');
+  }
+
+  html, body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    color: #ccc;
+    font: 500 clamp(16px, 0.5vw + 14px, 18px)/1.6 'Kitan Mono T', 'Noto Sans JP', monospace;
+    letter-spacing: -0.05em;
+    text-wrap: balance;
+    overflow-x: clip;
+  }
+  :lang(ja) {
+    letter-spacing: 0;
+  }
+  :lang(ja) :not(.l) {
+    letter-spacing: -0.05em;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(100lvh + 40svh);
+    z-index: -1;
+    background: url('/test-bg/gracile/gracile-earth-debris-field-2560.webp') center / cover;
+    animation: bg-parallax linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 160svh;
+    transform: translateY(var(--bg-shift, 0px));
+  }
+  @media (max-width: 40rem) {
+    body::before {
+      background-image: url('/test-bg/gracile/gracile-earth-debris-field-1024.webp');
+    }
+  }
+  body > * {
+    width: 100%;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .frost {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1rem 0 1rem;
+  }
+  .frost::before {
+    content: '';
+    position: absolute;
+    inset: 0 -12rem;
+    background: rgba(10, 10, 10, 0.75);
+    -webkit-backdrop-filter: blur(28px) saturate(1.2);
+    backdrop-filter: blur(28px) saturate(1.2);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.04) 1.5rem, rgba(0, 0, 0, 0.16) 3rem, rgba(0, 0, 0, 0.32) 4.5rem, rgba(0, 0, 0, 0.5) 6rem, rgba(0, 0, 0, 0.68) 7.5rem, rgba(0, 0, 0, 0.84) 9rem, rgba(0, 0, 0, 0.96) 10.5rem, #000 12rem, #000 calc(100% - 12rem), rgba(0, 0, 0, 0.96) calc(100% - 10.5rem), rgba(0, 0, 0, 0.84) calc(100% - 9rem), rgba(0, 0, 0, 0.68) calc(100% - 7.5rem), rgba(0, 0, 0, 0.5) calc(100% - 6rem), rgba(0, 0, 0, 0.32) calc(100% - 4.5rem), rgba(0, 0, 0, 0.16) calc(100% - 3rem), rgba(0, 0, 0, 0.04) calc(100% - 1.5rem), transparent);
+    mask-image: linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.04) 1.5rem, rgba(0, 0, 0, 0.16) 3rem, rgba(0, 0, 0, 0.32) 4.5rem, rgba(0, 0, 0, 0.5) 6rem, rgba(0, 0, 0, 0.68) 7.5rem, rgba(0, 0, 0, 0.84) 9rem, rgba(0, 0, 0, 0.96) 10.5rem, #000 12rem, #000 calc(100% - 12rem), rgba(0, 0, 0, 0.96) calc(100% - 10.5rem), rgba(0, 0, 0, 0.84) calc(100% - 9rem), rgba(0, 0, 0, 0.68) calc(100% - 7.5rem), rgba(0, 0, 0, 0.5) calc(100% - 6rem), rgba(0, 0, 0, 0.32) calc(100% - 4.5rem), rgba(0, 0, 0, 0.16) calc(100% - 3rem), rgba(0, 0, 0, 0.04) calc(100% - 1.5rem), transparent);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+    pointer-events: none;
+  }
+  .frost > * {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    padding-inline: 1rem;
+    box-sizing: border-box;
+  }
+  main.page { flex: 1; }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  @media (max-width: 40rem) {
+    .top {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  @keyframes bg-parallax {
+    to { transform: translateY(-40svh); }
+  }
+
+  a {
+    color: var(--color);
+    text-decoration: none;
+  }
+  p a {
+    text-decoration: underline;
+  }
+  ::selection {
+    background: var(--color);
+    color: #0a0a0a;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 1em;
+  }
