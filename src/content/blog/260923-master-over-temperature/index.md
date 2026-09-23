@@ -9,14 +9,14 @@ This is about two pieces of technology: the air conditioner and the refrigerator
 It is really with these two that we can control the effects of external temperature.
 The air conditioner gives us livable temperature for our bodies, and the fridge allows preservation of perishables.
 One note is that for countries with winter, the heater came as the first half, conquering the cold.
-The aircon, with the other half to conquer the hot, came much later.
+The aircon, with the other half to conquer the heat in equator countries, came much later.
 
 One certain country's leader has attributed the success of his country in a hot climate, to the act of installing aircon in every government office.
 An environment too hot is not conductive to productive work.
 In fact, I heard that 18 Celsius is the optimal temperature for the brain.
 Before the aircon, there existed many tricks that people use to adapt and evolve with the climate.
 Hot countries wear white outfits to avoid absorbing radiation heat, built inner courtyards in their houses with water fountains, and constructed air towers that suck in cool air.
-Air conditioning, at the cost of electricity (and pushing the hot air to be someone else's problem), brute forced the problem.
+Air conditioning, at the cost of electricity (and pushing the hot air to be someone else's problem), brute forced the entire situation.
 
 ## Hot climate architecture
 Traditional decisions made to adapt to hot climates have some things in common across countries and cultures:
