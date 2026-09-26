@@ -125,12 +125,16 @@ const { title, description } = Astro.props;
   .frost::before {
     content: '';
     position: absolute;
-    inset: 0 -12rem;
+    inset: 0 -12rem -12rem;
     background: rgba(10, 10, 10, 0.75);
     -webkit-backdrop-filter: blur(28px) saturate(1.2);
     backdrop-filter: blur(28px) saturate(1.2);
-    -webkit-mask-image: linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.04) 1.5rem, rgba(0, 0, 0, 0.16) 3rem, rgba(0, 0, 0, 0.32) 4.5rem, rgba(0, 0, 0, 0.5) 6rem, rgba(0, 0, 0, 0.68) 7.5rem, rgba(0, 0, 0, 0.84) 9rem, rgba(0, 0, 0, 0.96) 10.5rem, #000 12rem, #000 calc(100% - 12rem), rgba(0, 0, 0, 0.96) calc(100% - 10.5rem), rgba(0, 0, 0, 0.84) calc(100% - 9rem), rgba(0, 0, 0, 0.68) calc(100% - 7.5rem), rgba(0, 0, 0, 0.5) calc(100% - 6rem), rgba(0, 0, 0, 0.32) calc(100% - 4.5rem), rgba(0, 0, 0, 0.16) calc(100% - 3rem), rgba(0, 0, 0, 0.04) calc(100% - 1.5rem), transparent);
-    mask-image: linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.04) 1.5rem, rgba(0, 0, 0, 0.16) 3rem, rgba(0, 0, 0, 0.32) 4.5rem, rgba(0, 0, 0, 0.5) 6rem, rgba(0, 0, 0, 0.68) 7.5rem, rgba(0, 0, 0, 0.84) 9rem, rgba(0, 0, 0, 0.96) 10.5rem, #000 12rem, #000 calc(100% - 12rem), rgba(0, 0, 0, 0.96) calc(100% - 10.5rem), rgba(0, 0, 0, 0.84) calc(100% - 9rem), rgba(0, 0, 0, 0.68) calc(100% - 7.5rem), rgba(0, 0, 0, 0.5) calc(100% - 6rem), rgba(0, 0, 0, 0.32) calc(100% - 4.5rem), rgba(0, 0, 0, 0.16) calc(100% - 3rem), rgba(0, 0, 0, 0.04) calc(100% - 1.5rem), transparent);
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.04) 1.5rem, rgba(0, 0, 0, 0.16) 3rem, rgba(0, 0, 0, 0.32) 4.5rem, rgba(0, 0, 0, 0.5) 6rem, rgba(0, 0, 0, 0.68) 7.5rem, rgba(0, 0, 0, 0.84) 9rem, rgba(0, 0, 0, 0.96) 10.5rem, #000 12rem, #000 calc(100% - 12rem), rgba(0, 0, 0, 0.96) calc(100% - 10.5rem), rgba(0, 0, 0, 0.84) calc(100% - 9rem), rgba(0, 0, 0, 0.68) calc(100% - 7.5rem), rgba(0, 0, 0, 0.5) calc(100% - 6rem), rgba(0, 0, 0, 0.32) calc(100% - 4.5rem), rgba(0, 0, 0, 0.16) calc(100% - 3rem), rgba(0, 0, 0, 0.04) calc(100% - 1.5rem), transparent),
+      linear-gradient(to bottom, #000 calc(100% - 12rem), transparent);
+    mask-image:
+      linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.04) 1.5rem, rgba(0, 0, 0, 0.16) 3rem, rgba(0, 0, 0, 0.32) 4.5rem, rgba(0, 0, 0, 0.5) 6rem, rgba(0, 0, 0, 0.68) 7.5rem, rgba(0, 0, 0, 0.84) 9rem, rgba(0, 0, 0, 0.96) 10.5rem, #000 12rem, #000 calc(100% - 12rem), rgba(0, 0, 0, 0.96) calc(100% - 10.5rem), rgba(0, 0, 0, 0.84) calc(100% - 9rem), rgba(0, 0, 0, 0.68) calc(100% - 7.5rem), rgba(0, 0, 0, 0.5) calc(100% - 6rem), rgba(0, 0, 0, 0.32) calc(100% - 4.5rem), rgba(0, 0, 0, 0.16) calc(100% - 3rem), rgba(0, 0, 0, 0.04) calc(100% - 1.5rem), transparent),
+      linear-gradient(to bottom, #000 calc(100% - 12rem), transparent);
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
     pointer-events: none;
