@@ -12,7 +12,7 @@
     "astro": "astro",
     "new": "bash scripts/new-post.sh",
     "publish": "bash scripts/publish.sh",
-    "update": "git add -A && git commit -m update && git push"
+    "update": "bash scripts/update.sh"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
