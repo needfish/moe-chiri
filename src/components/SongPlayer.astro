@@ -3,14 +3,14 @@
         <span id="now-playing"></span>
         <span id="play-hint" aria-hidden="true">play music<span class="arrows">&gt;&gt;</span></span>
         <div class="transport">
-            <button id="prev-btn" aria-label="previous song">⏮</button>
+            <button id="prev-btn" aria-label="previous song"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5.5h2v13H6zm12 0v13l-8.5-6.5z"/></svg></button>
             <div class="pad">
             <button id="song-btn" aria-label="play song">
             <svg class="orbit" viewBox="0 0 100 100" fill="none" aria-hidden="true"><circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="3" stroke-dasharray="250 39" transform="rotate(118 50 50)"/></svg>
             <svg id="song-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
         </button>
         </div>
-        <button id="next-btn" aria-label="next song">⏭</button>
+        <button id="next-btn" aria-label="next song"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 5.5h2v13h-2zM6 5.5v13l8.5-6.5z"/></svg></button>
         </div>
     </div>
     <div id="yt-player"></div>
@@ -21,14 +21,12 @@
         position: relative;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 1rem;
     }
 
     .transport {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        margin-inline: 0.75rem;
     }
 
     .pad {
@@ -73,14 +71,21 @@
     #prev-btn {
         display: grid;
         place-items: center;
-        line-height: 1;
-        border: none;
+        width: 2em;
+        aspect-ratio: 1;
+        border: 1px solid currentColor;
+        border-radius: 50%;
         background: none;
         color: inherit;
         cursor: pointer;
         padding: 0;
-        font-size: 1.2em;
         opacity: 0.6;
+    }
+
+    #next-btn svg,
+    #prev-btn svg {
+        width: 1.28em;
+        height: 1.28em;
     }
 
     #next-btn:hover,
