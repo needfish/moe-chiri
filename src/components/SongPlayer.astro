@@ -13,7 +13,7 @@
         <button id="next-btn" aria-label="next song"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 5.5h2v13h-2zM6 5.5v13l8.5-6.5z"/></svg></button>
         </div>
     </div>
-    <div id="yt-player"></div>
+    <audio id="audio" preload="none"></audio>
 </div>
 
 <style>
@@ -155,78 +155,86 @@
     }
 </style>
 
-<style is:global>
-    /* the YT API replaces this div with an iframe, losing the scoped attribute */
-    #yt-player {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        opacity: 0;
-        pointer-events: none;
-    }
-</style>
-
 <script>
+    import catalog from '../music/catalog.json';
+
+    interface Track {
+        id: string;
+        title: string;
+        seconds: number;
+        audioFile: string;
+        bytes: number;
+    }
+
     const icons = {
         play: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>',
         pause: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg>',
     };
+    const audio = document.getElementById('audio') as HTMLAudioElement;
     const btn = document.getElementById('song-btn') as HTMLButtonElement;
     const icon = document.getElementById('song-icon')!;
     const label = document.getElementById('now-playing')!;
     const hint = document.getElementById('play-hint')!;
+
+    const shuffleOrder = (tracks: Track[]): Track[] => {
+        const out = [...tracks];
+        for (let i = out.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [out[i], out[j]] = [out[j], out[i]];
+        }
+        return out;
+    };
+
+    const stepIndex = (current: number, direction: 1 | -1, length: number): number =>
+        (current + direction + length) % length;
+
+    const playTrack = (track: Track | undefined): void => {
+        if (!track) return;
+        audio.src = track.audioFile;
+        audio.play();
+    };
+
     if (!btn.dataset.bound) {
         btn.dataset.bound = '1';
-        const createPlayer = () => {
-            (window as any).player = new YT.Player('yt-player', {
-                playerVars: {
-                    playsinline: 1,
-                    listType: 'playlist',
-                    list: 'PLQKZBqSJS3rk',
-                    shuffle: 1,
-                },
-                events: {
-                    onReady: () => (window as any).player!.playVideo(),
-                    onStateChange: (e: YT.OnStateChangeEvent) => {
-                        const player = (window as any).player as YT.Player;
-                        const playing = e.data === YT.PlayerState.PLAYING;
-                        icon.innerHTML = playing ? icons.pause : icons.play;
-                        btn.classList.toggle('playing', playing);
-                        if (playing) {
-                            const d = player.getVideoData();
-                            const text = `now playing:<br><a href="https://youtu.be/${d.video_id}" target="_blank" rel="noopener">${d.title}</a>`;
-                            if (label.innerHTML !== text) label.innerHTML = text;
-                        }
-                        label.classList.toggle('show', playing);
-                        if (playing) hint.classList.add('hidden');
-                    },
-                },
-            });
-        };
-        // appends the YouTube IFrame API script once, then runs onReady
-        const loadYouTubeAPI = (onReady: () => void): void => {
-            (window as any).onYouTubeIframeAPIReady = onReady;
-            const tag = document.createElement('script');
-            tag.src = 'https://www.youtube.com/iframe_api';
-            document.head.append(tag);
-        };
+        const queue = shuffleOrder(catalog.tracks as Track[]);
+        let at = 0;
+
+        audio.addEventListener('play', () => {
+            const track = queue[at];
+            icon.innerHTML = icons.pause;
+            btn.classList.add('playing');
+            label.innerHTML = `now playing:<br><a href="https://youtu.be/${track.id}" target="_blank" rel="noopener">${track.title}</a>`;
+            label.classList.add('show');
+            hint.classList.add('hidden');
+        });
+
+        audio.addEventListener('pause', () => {
+            icon.innerHTML = icons.play;
+            btn.classList.remove('playing');
+            label.classList.remove('show');
+        });
+
+        audio.addEventListener('ended', () => {
+            at = stepIndex(at, 1, queue.length);
+            playTrack(queue[at]);
+        });
+
         btn.addEventListener('click', () => {
-            const w = window as any;
-            if (w.player) {
-                w.player.getPlayerState() === YT.PlayerState.PLAYING
-                    ? w.player.pauseVideo()
-                    : w.player.playVideo();
-            } else if (w.YT?.Player) {
-                createPlayer();
+            if (!audio.paused) {
+                audio.pause();
+            } else if (audio.src) {
+                audio.play();
             } else {
-                loadYouTubeAPI(createPlayer);
+                playTrack(queue[at]);
             }
         });
         document.getElementById('next-btn')?.addEventListener('click', () => {
-            (window as any).player?.nextVideo();
+            at = stepIndex(at, 1, queue.length);
+            playTrack(queue[at]);
         });
         document.getElementById('prev-btn')?.addEventListener('click', () => {
-            (window as any).player?.previousVideo();
+            at = stepIndex(at, -1, queue.length);
+            playTrack(queue[at]);
         });
     }
 </script>
