@@ -35,3 +35,5 @@ Being able to turn your room cool on demand is a privilege not everyone possesse
 Having ice cubes in my water is a happiness, when I consider it.
 
 Whether they make the climate worse though...is not really a concern for now.
+
+P.S: On the other hand of the temperature spectrum, the microwave is the greatest invention of all.
