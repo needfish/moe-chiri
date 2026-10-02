@@ -41,6 +41,30 @@ const { title, description } = Astro.props;
                 addEventListener('orientationchange', () => { cap = innerHeight * 0.4; bg(); }, { passive: true });
                 bg();
             }
+
+            // Clicking a link to the page you are already on should not trigger the
+            // client router — it swaps the DOM, which tears down and re-rasterises
+            // the frosted (backdrop-filter) layer for no reason. Capture phase so we
+            // run before the router's own document click listener; it bails on
+            // defaultPrevented.
+            document.addEventListener(
+                'click',
+                (e) => {
+                    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+                    const a = e.target instanceof Element ? e.target.closest('a[href]') : null;
+                    if (!(a instanceof HTMLAnchorElement)) return;
+                    if (a.target && a.target !== '_self') return;
+                    if (a.hasAttribute('download')) return;
+                    const url = new URL(a.href, location.href);
+                    if (url.origin !== location.origin) return;
+                    if (url.pathname !== location.pathname || url.search !== location.search) return;
+                    e.preventDefault();
+                    const el = url.hash && document.getElementById(url.hash.slice(1));
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    else scrollTo({ top: 0, behavior: 'smooth' });
+                },
+                true
+            );
         </script>
     </body>
 </html>
