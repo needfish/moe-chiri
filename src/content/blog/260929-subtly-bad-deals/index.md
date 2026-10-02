@@ -33,7 +33,7 @@ Is it fine to take in a sales deal? Sure. Is it fine to show empathy to the sale
 
 Client facing roles are tough. These people are pretty much weathering the storm from decisions not their own.
 
-Just as a takeaway, here are some tips.
+P.S Just as a takeaway and reflection for my own sake, here are some tips.
 - When the salesman is speaking fast to the point of overwhelming, insist that they slow down. If they disagree, they are definitely hiding something in the terms.
 - Clarify out the terms and mechanisms -- "free" is not free when it means a refund. "refund" is not a refund when it's in the form of points or vouchers. Detecting when they are conflating terms takes a lot of effort and attention to detail, especially when they are speaking fast.
 - If possible, avoid agreeing to anything over the phone or digitally. This one salesman hooked up a credit card contract through my bank app in seconds.
