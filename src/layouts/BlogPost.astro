@@ -7,7 +7,7 @@ type Props = CollectionEntry<"blog">["data"] & {
     next?: CollectionEntry<"blog">;
 };
 
-const { title, pubDate, prev, next } = Astro.props;
+const { title, pubDate, heroImage, prev, next } = Astro.props;
 
 function formatDate(date: Date) {
     const y = date.getFullYear();
@@ -17,7 +17,7 @@ function formatDate(date: Date) {
 }
 ---
 
-<BasePage title={`${title} — kitan's space travel`}>
+<BasePage title={`${title} — kitan's space travel`} image={heroImage}>
     <h1>{title}</h1>
     <p class="date">
         <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
