@@ -50,7 +50,7 @@ import { SITE_DESCRIPTION } from "../consts";
     }
 </style>
 <script>
-    document.querySelectorAll(".rss-copy").forEach((el) => {
+    document.querySelectorAll<HTMLElement>(".rss-copy").forEach((el) => {
         el.addEventListener("click", async () => {
             await navigator.clipboard.writeText(el.dataset.url!);
             const old = el.textContent;
