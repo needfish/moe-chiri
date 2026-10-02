@@ -57,7 +57,10 @@ const { title, description } = Astro.props;
                     if (a.hasAttribute('download')) return;
                     const url = new URL(a.href, location.href);
                     if (url.origin !== location.origin) return;
-                    if (url.pathname !== location.pathname || url.search !== location.search) return;
+                    // Trailing slashes differ between dev and the deployed site
+                    // (e.g. href "/archive" vs location "/archive/"), so normalise.
+                    const norm = (p) => (p.length > 1 && p.endsWith('/') ? p.slice(0, -1) : p);
+                    if (norm(url.pathname) !== norm(location.pathname) || url.search !== location.search) return;
                     e.preventDefault();
                     const el = url.hash && document.getElementById(url.hash.slice(1));
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
