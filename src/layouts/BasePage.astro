@@ -17,8 +17,8 @@ const { title, description } = Astro.props;
     <head>
         <BaseHead {title} {description} />
         <link rel="preload" href="/fonts/kitan-mono-t-medium.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="/test-bg/gracile/gracile-earth-debris-field-2560.webp" as="image" fetchpriority="high" media="(min-width: 40.01rem)">
-        <link rel="preload" href="/test-bg/gracile/gracile-earth-debris-field-1024.webp" as="image" fetchpriority="high" media="(max-width: 40rem)">
+        <link rel="preload" href="/test-bg/gracile/gracile-earth-debris-field-2560.avif" as="image" type="image/avif" fetchpriority="high" media="(min-width: 40.01rem)">
+        <link rel="preload" href="/test-bg/gracile/gracile-earth-debris-field-1024.avif" as="image" type="image/avif" fetchpriority="high" media="(max-width: 40rem)">
     </head>
     <body>
         <div class="frost">
@@ -98,6 +98,10 @@ const { title, description } = Astro.props;
     height: calc(100lvh + 40svh);
     z-index: -1;
     background: url('/test-bg/gracile/gracile-earth-debris-field-2560.webp') center / cover;
+    background: image-set(
+      url('/test-bg/gracile/gracile-earth-debris-field-2560.avif') type('image/avif'),
+      url('/test-bg/gracile/gracile-earth-debris-field-2560.webp') type('image/webp')
+    ) center / cover;
     animation: bg-parallax linear both;
     animation-timeline: scroll(root);
     animation-range: 0 160svh;
@@ -106,6 +110,10 @@ const { title, description } = Astro.props;
   @media (max-width: 40rem) {
     body::before {
       background-image: url('/test-bg/gracile/gracile-earth-debris-field-1024.webp');
+      background-image: image-set(
+        url('/test-bg/gracile/gracile-earth-debris-field-1024.avif') type('image/avif'),
+        url('/test-bg/gracile/gracile-earth-debris-field-1024.webp') type('image/webp')
+      );
     }
   }
   body > * {
