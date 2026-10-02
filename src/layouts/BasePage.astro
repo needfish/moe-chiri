@@ -32,42 +32,67 @@ const { title, description } = Astro.props;
             <Footer />
         </div>
         <script>
-            if (!CSS.supports('animation-timeline: scroll()')) {
+            /** Fallback parallax for browsers without scroll-driven animations. */
+            function initBackgroundParallaxFallback() {
+                if (CSS.supports('animation-timeline: scroll()')) return;
+
                 let cap = innerHeight * 0.4;
-                const bg = () => {
-                    document.body.style.setProperty('--bg-shift', -Math.max(0, Math.min(scrollY * 0.25, cap)) + 'px');
+                const shift = () => {
+                    document.body.style.setProperty('--bg-shift', `${-Math.max(0, Math.min(scrollY * 0.25, cap))}px`);
                 };
-                addEventListener('scroll', bg, { passive: true });
-                addEventListener('orientationchange', () => { cap = innerHeight * 0.4; bg(); }, { passive: true });
-                bg();
+
+                addEventListener('scroll', shift, { passive: true });
+                addEventListener(
+                    'orientationchange',
+                    () => {
+                        cap = innerHeight * 0.4;
+                        shift();
+                    },
+                    { passive: true }
+                );
+                shift();
             }
 
-            // Clicking a link to the page you are already on should not trigger the
-            // client router — it swaps the DOM, which tears down and re-rasterises
-            // the frosted (backdrop-filter) layer for no reason. Capture phase so we
-            // run before the router's own document click listener; it bails on
-            // defaultPrevented.
-            document.addEventListener(
-                'click',
-                (e) => {
-                    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
-                    const a = e.target instanceof Element ? e.target.closest('a[href]') : null;
-                    if (!(a instanceof HTMLAnchorElement)) return;
-                    if (a.target && a.target !== '_self') return;
-                    if (a.hasAttribute('download')) return;
-                    const url = new URL(a.href, location.href);
-                    if (url.origin !== location.origin) return;
-                    // Trailing slashes differ between dev and the deployed site
-                    // (e.g. href "/archive" vs location "/archive/"), so normalise.
-                    const norm = (p) => (p.length > 1 && p.endsWith('/') ? p.slice(0, -1) : p);
-                    if (norm(url.pathname) !== norm(location.pathname) || url.search !== location.search) return;
-                    e.preventDefault();
-                    const el = url.hash && document.getElementById(url.hash.slice(1));
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    else scrollTo({ top: 0, behavior: 'smooth' });
-                },
-                true
-            );
+            /** Dev serves `/archive`, production `/archive/` — compare them as equal. */
+            const normalizePath = (path: string) => path.replace(/\/+$/, '') || '/';
+
+            /**
+             * Clicking a link to the page you are already on should not trigger the client
+             * router: it swaps the DOM, which tears down and re-rasterises the frosted
+             * (backdrop-filter) layer for no reason.
+             *
+             * Registered in the capture phase so it runs before the router's own
+             * document-level click listener, which bails when `defaultPrevented` is set.
+             */
+            function initSamePageNoReload() {
+                document.addEventListener(
+                    'click',
+                    (event) => {
+                        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
+                            return;
+                        }
+
+                        const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+                        if (!(link instanceof HTMLAnchorElement)) return;
+                        if ((link.target && link.target !== '_self') || link.hasAttribute('download')) return;
+
+                        const url = new URL(link.href, location.href);
+                        if (url.origin !== location.origin) return;
+                        if (normalizePath(url.pathname) !== normalizePath(location.pathname)) return;
+                        if (url.search !== location.search) return;
+
+                        event.preventDefault();
+
+                        const anchor = url.hash ? document.getElementById(url.hash.slice(1)) : null;
+                        if (anchor) anchor.scrollIntoView({ behavior: 'smooth' });
+                        else window.scrollTo({ top: 0, behavior: 'smooth' });
+                    },
+                    true
+                );
+            }
+
+            initBackgroundParallaxFallback();
+            initSamePageNoReload();
         </script>
     </body>
 </html>
