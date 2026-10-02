@@ -32,3 +32,11 @@ I was convinced that such a period would be about 2 weeks, and yet, when I attem
 Is it fine to take in a sales deal? Sure. Is it fine to show empathy to the salesperson running KPI on the 29th day of the month? Best not to. My dissatisfaction ended up with "We will review the sales call and send feedback to the salesman". They might be getting a stern review, or not, idk. If everyone is pressured by their bosses to sell bad deals, whose fault is it, really?
 
 Client facing roles are tough. These people are pretty much weathering the storm from decisions not their own.
+
+Just as a takeaway, here are some tips.
+- When the salesman is speaking fast to the point of overwhelming, insist that they slow down. If they disagree, they are definitely hiding something in the terms.
+- Clarify out the terms and mechanisms -- "free" is not free when it means a refund. "refund" is not a refund when it's in the form of points or vouchers. Detecting when they are conflating terms takes a lot of effort and attention to detail, especially when they are speaking fast.
+- If possible, avoid agreeing to anything over the phone or digitally. This one salesman hooked up a credit card contract through my bank app in seconds.
+- As a plus one to the above point, always do money business in person.
+
+Stay safe out there. Peace.
