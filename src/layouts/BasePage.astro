@@ -32,7 +32,6 @@ const { title, description } = Astro.props;
             <Footer />
         </div>
         <script>
-            /** Fallback parallax for browsers without scroll-driven animations. */
             function initBackgroundParallaxFallback() {
                 if (CSS.supports('animation-timeline: scroll()')) return;
 
@@ -53,17 +52,8 @@ const { title, description } = Astro.props;
                 shift();
             }
 
-            /** Dev serves `/archive`, production `/archive/` — compare them as equal. */
             const normalizePath = (path: string) => path.replace(/\/+$/, '') || '/';
 
-            /**
-             * Clicking a link to the page you are already on should not trigger the client
-             * router: it swaps the DOM, which tears down and re-rasterises the frosted
-             * (backdrop-filter) layer for no reason.
-             *
-             * Registered in the capture phase so it runs before the router's own
-             * document-level click listener, which bails when `defaultPrevented` is set.
-             */
             function initSamePageNoReload() {
                 document.addEventListener(
                     'click',
