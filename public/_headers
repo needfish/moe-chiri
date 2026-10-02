@@ -1,0 +1,17 @@
+# Long-lived browser cache for static assets.
+# These filenames are NOT content-hashed, so if a file's contents change you
+# must rename it (e.g. gracile-earth-debris-field-2560-v2.webp) or returning
+# visitors will keep the old copy until max-age expires.
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/test-bg/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/wallpaper-*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Hashed by the bundler, safe to cache forever.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
