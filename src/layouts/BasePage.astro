@@ -17,9 +17,29 @@ const { title, description, image } = Astro.props;
 <html lang="en">
     <head>
         <BaseHead {title} {description} {image} />
-        <link rel="preload" href="/fonts/kitan-mono-t-medium.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="/test-bg/gracile/gracile-earth-debris-field-2560.avif" as="image" type="image/avif" fetchpriority="high" media="(min-width: 40.01rem)">
-        <link rel="preload" href="/test-bg/gracile/gracile-earth-debris-field-1024.avif" as="image" type="image/avif" fetchpriority="high" media="(max-width: 40rem)">
+        <link
+            rel="preload"
+            href="/fonts/kitan-mono-t-medium.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/test-bg/gracile/gracile-earth-debris-field-2560.avif"
+            as="image"
+            type="image/avif"
+            fetchpriority="high"
+            media="(min-width: 40.01rem)"
+        />
+        <link
+            rel="preload"
+            href="/test-bg/gracile/gracile-earth-debris-field-1024.avif"
+            as="image"
+            type="image/avif"
+            fetchpriority="high"
+            media="(max-width: 40rem)"
+        />
     </head>
     <body>
         <div class="frost">
@@ -34,51 +54,76 @@ const { title, description, image } = Astro.props;
         </div>
         <script>
             function initBackgroundParallaxFallback() {
-                if (CSS.supports('animation-timeline: scroll()')) return;
+                if (CSS.supports("animation-timeline: scroll()")) return;
 
                 let cap = innerHeight * 0.4;
                 const shift = () => {
-                    document.body.style.setProperty('--bg-shift', `${-Math.max(0, Math.min(scrollY * 0.25, cap))}px`);
+                    document.body.style.setProperty(
+                        "--bg-shift",
+                        `${-Math.max(0, Math.min(scrollY * 0.25, cap))}px`,
+                    );
                 };
 
-                addEventListener('scroll', shift, { passive: true });
+                addEventListener("scroll", shift, { passive: true });
                 addEventListener(
-                    'orientationchange',
+                    "orientationchange",
                     () => {
                         cap = innerHeight * 0.4;
                         shift();
                     },
-                    { passive: true }
+                    { passive: true },
                 );
                 shift();
             }
 
-            const normalizePath = (path: string) => path.replace(/\/+$/, '') || '/';
+            const normalizePath = (path: string) =>
+                path.replace(/\/+$/, "") || "/";
 
             function initSamePageNoReload() {
                 document.addEventListener(
-                    'click',
+                    "click",
                     (event) => {
-                        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
+                        if (
+                            event.defaultPrevented ||
+                            event.button !== 0 ||
+                            event.metaKey ||
+                            event.ctrlKey ||
+                            event.altKey ||
+                            event.shiftKey
+                        ) {
                             return;
                         }
 
-                        const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+                        const link =
+                            event.target instanceof Element
+                                ? event.target.closest("a[href]")
+                                : null;
                         if (!(link instanceof HTMLAnchorElement)) return;
-                        if ((link.target && link.target !== '_self') || link.hasAttribute('download')) return;
+                        if (
+                            (link.target && link.target !== "_self") ||
+                            link.hasAttribute("download")
+                        )
+                            return;
 
                         const url = new URL(link.href, location.href);
                         if (url.origin !== location.origin) return;
-                        if (normalizePath(url.pathname) !== normalizePath(location.pathname)) return;
+                        if (
+                            normalizePath(url.pathname) !==
+                            normalizePath(location.pathname)
+                        )
+                            return;
                         if (url.search !== location.search) return;
 
                         event.preventDefault();
 
-                        const anchor = url.hash ? document.getElementById(url.hash.slice(1)) : null;
-                        if (anchor) anchor.scrollIntoView({ behavior: 'smooth' });
-                        else window.scrollTo({ top: 0, behavior: 'smooth' });
+                        const anchor = url.hash
+                            ? document.getElementById(url.hash.slice(1))
+                            : null;
+                        if (anchor)
+                            anchor.scrollIntoView({ behavior: "smooth" });
+                        else window.scrollTo({ top: 0, behavior: "smooth" });
                     },
-                    true
+                    true,
                 );
             }
 
@@ -89,145 +134,226 @@ const { title, description, image } = Astro.props;
 </html>
 
 <style is:global>
-  :root {
-    --color: #fa9442;
-    --page-width: 100ch;
-    --latin-tracking: 0;
-  }
+    :root {
+        --color: #fa9442;
+        --page-width: 100ch;
+        --latin-tracking: -0.055em;
+    }
 
-  @font-face {
-    font-display: swap;
-    font-family: 'Kitan Mono T';
-    font-weight: 400;
-    font-style: normal;
-    src: url('/fonts/kitan-mono-t-regular.woff2') format('woff2');
-  }
-  @font-face {
-    font-display: swap;
-    font-family: 'Kitan Mono T';
-    font-weight: 500;
-    font-style: normal;
-    src: url('/fonts/kitan-mono-t-medium.woff2') format('woff2');
-  }
-  @font-face {
-    font-display: swap;
-    font-family: 'Kitan Mono T';
-    font-weight: 700;
-    font-style: normal;
-    src: url('/fonts/kitan-mono-t-bold.woff2') format('woff2');
-  }
+    @font-face {
+        font-display: swap;
+        font-family: "Kitan Mono T";
+        font-weight: 400;
+        font-style: normal;
+        src: url("/fonts/kitan-mono-t-regular.woff2") format("woff2");
+    }
+    @font-face {
+        font-display: swap;
+        font-family: "Kitan Mono T";
+        font-weight: 500;
+        font-style: normal;
+        src: url("/fonts/kitan-mono-t-medium.woff2") format("woff2");
+    }
+    @font-face {
+        font-display: swap;
+        font-family: "Kitan Mono T";
+        font-weight: 700;
+        font-style: normal;
+        src: url("/fonts/kitan-mono-t-bold.woff2") format("woff2");
+    }
 
-  html, body {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    color: #ccc;
-    font: 500 clamp(16px, 0.5vw + 14px, 18px)/1.6 'Kitan Mono T', 'Noto Sans JP', monospace;
-    letter-spacing: var(--latin-tracking);
-    text-wrap: balance;
-    overflow-x: clip;
-  }
-  :lang(ja) {
-    letter-spacing: 0;
-  }
-  :lang(ja) :not(.l) {
-    letter-spacing: var(--latin-tracking);
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: calc(100lvh + 40svh);
-    z-index: -1;
-    background: url('/test-bg/gracile/gracile-earth-debris-field-2560.webp') center / cover;
-    background: image-set(
-      url('/test-bg/gracile/gracile-earth-debris-field-2560.avif') type('image/avif'),
-      url('/test-bg/gracile/gracile-earth-debris-field-2560.webp') type('image/webp')
-    ) center / cover;
-    animation: bg-parallax linear both;
-    animation-timeline: scroll(root);
-    animation-range: 0 160svh;
-    transform: translateY(var(--bg-shift, 0px));
-  }
-  @media (max-width: 40rem) {
+    html,
+    body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        color: #ccc;
+        font:
+            500 clamp(16px, 0.5vw + 14px, 18px)/1.6 "Kitan Mono T",
+            "Noto Sans JP",
+            monospace;
+        letter-spacing: var(--latin-tracking);
+        text-wrap: balance;
+        overflow-x: clip;
+    }
+    :lang(ja) {
+        letter-spacing: 0;
+    }
+    :lang(ja) :not(.l) {
+        letter-spacing: var(--latin-tracking);
+    }
     body::before {
-      background-image: url('/test-bg/gracile/gracile-earth-debris-field-1024.webp');
-      background-image: image-set(
-        url('/test-bg/gracile/gracile-earth-debris-field-1024.avif') type('image/avif'),
-        url('/test-bg/gracile/gracile-earth-debris-field-1024.webp') type('image/webp')
-      );
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: calc(100lvh + 40svh);
+        z-index: -1;
+        background: url("/test-bg/gracile/gracile-earth-debris-field-2560.webp")
+            center / cover;
+        background: image-set(
+                url("/test-bg/gracile/gracile-earth-debris-field-2560.avif")
+                    type("image/avif"),
+                url("/test-bg/gracile/gracile-earth-debris-field-2560.webp")
+                    type("image/webp")
+            )
+            center / cover;
+        animation: bg-parallax linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 160svh;
+        transform: translateY(var(--bg-shift, 0px));
     }
-  }
-  body > * {
-    width: 100%;
-    max-width: var(--page-width);
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
+    @media (max-width: 40rem) {
+        body::before {
+            background-image: url("/test-bg/gracile/gracile-earth-debris-field-1024.webp");
+            background-image: image-set(
+                url("/test-bg/gracile/gracile-earth-debris-field-1024.avif")
+                    type("image/avif"),
+                url("/test-bg/gracile/gracile-earth-debris-field-1024.webp")
+                    type("image/webp")
+            );
+        }
+    }
+    body > * {
+        width: 100%;
+        max-width: var(--page-width);
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
 
-  .frost {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 1rem 0 1rem;
-  }
-  .frost::before {
-    content: '';
-    position: absolute;
-    inset: 0 -12rem -6rem;
-    background: rgba(10, 10, 10, 0.75);
-    -webkit-backdrop-filter: blur(28px) saturate(1.2);
-    backdrop-filter: blur(28px) saturate(1.2);
-    -webkit-mask-image:
-      linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.04) 1.5rem, rgba(0, 0, 0, 0.16) 3rem, rgba(0, 0, 0, 0.32) 4.5rem, rgba(0, 0, 0, 0.5) 6rem, rgba(0, 0, 0, 0.68) 7.5rem, rgba(0, 0, 0, 0.84) 9rem, rgba(0, 0, 0, 0.96) 10.5rem, #000 12rem, #000 calc(100% - 12rem), rgba(0, 0, 0, 0.96) calc(100% - 10.5rem), rgba(0, 0, 0, 0.84) calc(100% - 9rem), rgba(0, 0, 0, 0.68) calc(100% - 7.5rem), rgba(0, 0, 0, 0.5) calc(100% - 6rem), rgba(0, 0, 0, 0.32) calc(100% - 4.5rem), rgba(0, 0, 0, 0.16) calc(100% - 3rem), rgba(0, 0, 0, 0.04) calc(100% - 1.5rem), transparent),
-      linear-gradient(to bottom, #000 calc(100% - 11rem), rgba(0, 0, 0, 0.96) calc(100% - 9.625rem), rgba(0, 0, 0, 0.84) calc(100% - 8.25rem), rgba(0, 0, 0, 0.68) calc(100% - 6.875rem), rgba(0, 0, 0, 0.5) calc(100% - 5.5rem), rgba(0, 0, 0, 0.32) calc(100% - 4.125rem), rgba(0, 0, 0, 0.16) calc(100% - 2.75rem), rgba(0, 0, 0, 0.04) calc(100% - 1.375rem), transparent);
-    mask-image:
-      linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.04) 1.5rem, rgba(0, 0, 0, 0.16) 3rem, rgba(0, 0, 0, 0.32) 4.5rem, rgba(0, 0, 0, 0.5) 6rem, rgba(0, 0, 0, 0.68) 7.5rem, rgba(0, 0, 0, 0.84) 9rem, rgba(0, 0, 0, 0.96) 10.5rem, #000 12rem, #000 calc(100% - 12rem), rgba(0, 0, 0, 0.96) calc(100% - 10.5rem), rgba(0, 0, 0, 0.84) calc(100% - 9rem), rgba(0, 0, 0, 0.68) calc(100% - 7.5rem), rgba(0, 0, 0, 0.5) calc(100% - 6rem), rgba(0, 0, 0, 0.32) calc(100% - 4.5rem), rgba(0, 0, 0, 0.16) calc(100% - 3rem), rgba(0, 0, 0, 0.04) calc(100% - 1.5rem), transparent),
-      linear-gradient(to bottom, #000 calc(100% - 11rem), rgba(0, 0, 0, 0.96) calc(100% - 9.625rem), rgba(0, 0, 0, 0.84) calc(100% - 8.25rem), rgba(0, 0, 0, 0.68) calc(100% - 6.875rem), rgba(0, 0, 0, 0.5) calc(100% - 5.5rem), rgba(0, 0, 0, 0.32) calc(100% - 4.125rem), rgba(0, 0, 0, 0.16) calc(100% - 2.75rem), rgba(0, 0, 0, 0.04) calc(100% - 1.375rem), transparent);
-    -webkit-mask-composite: source-in;
-    mask-composite: intersect;
-    pointer-events: none;
-  }
-  .frost > * {
-    position: relative;
-    width: 100%;
-    max-width: none;
-    padding-inline: 1rem;
-    box-sizing: border-box;
-  }
-  main.page { flex: 1; }
+    .frost {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 1rem 0 1rem;
+    }
+    .frost::before {
+        content: "";
+        position: absolute;
+        inset: 0 -12rem -6rem;
+        background: rgba(10, 10, 10, 0.75);
+        -webkit-backdrop-filter: blur(28px) saturate(1.2);
+        backdrop-filter: blur(28px) saturate(1.2);
+        -webkit-mask-image:
+            linear-gradient(
+                to right,
+                transparent 0,
+                rgba(0, 0, 0, 0.04) 1.5rem,
+                rgba(0, 0, 0, 0.16) 3rem,
+                rgba(0, 0, 0, 0.32) 4.5rem,
+                rgba(0, 0, 0, 0.5) 6rem,
+                rgba(0, 0, 0, 0.68) 7.5rem,
+                rgba(0, 0, 0, 0.84) 9rem,
+                rgba(0, 0, 0, 0.96) 10.5rem,
+                #000 12rem,
+                #000 calc(100% - 12rem),
+                rgba(0, 0, 0, 0.96) calc(100% - 10.5rem),
+                rgba(0, 0, 0, 0.84) calc(100% - 9rem),
+                rgba(0, 0, 0, 0.68) calc(100% - 7.5rem),
+                rgba(0, 0, 0, 0.5) calc(100% - 6rem),
+                rgba(0, 0, 0, 0.32) calc(100% - 4.5rem),
+                rgba(0, 0, 0, 0.16) calc(100% - 3rem),
+                rgba(0, 0, 0, 0.04) calc(100% - 1.5rem),
+                transparent
+            ),
+            linear-gradient(
+                to bottom,
+                #000 calc(100% - 11rem),
+                rgba(0, 0, 0, 0.96) calc(100% - 9.625rem),
+                rgba(0, 0, 0, 0.84) calc(100% - 8.25rem),
+                rgba(0, 0, 0, 0.68) calc(100% - 6.875rem),
+                rgba(0, 0, 0, 0.5) calc(100% - 5.5rem),
+                rgba(0, 0, 0, 0.32) calc(100% - 4.125rem),
+                rgba(0, 0, 0, 0.16) calc(100% - 2.75rem),
+                rgba(0, 0, 0, 0.04) calc(100% - 1.375rem),
+                transparent
+            );
+        mask-image:
+            linear-gradient(
+                to right,
+                transparent 0,
+                rgba(0, 0, 0, 0.04) 1.5rem,
+                rgba(0, 0, 0, 0.16) 3rem,
+                rgba(0, 0, 0, 0.32) 4.5rem,
+                rgba(0, 0, 0, 0.5) 6rem,
+                rgba(0, 0, 0, 0.68) 7.5rem,
+                rgba(0, 0, 0, 0.84) 9rem,
+                rgba(0, 0, 0, 0.96) 10.5rem,
+                #000 12rem,
+                #000 calc(100% - 12rem),
+                rgba(0, 0, 0, 0.96) calc(100% - 10.5rem),
+                rgba(0, 0, 0, 0.84) calc(100% - 9rem),
+                rgba(0, 0, 0, 0.68) calc(100% - 7.5rem),
+                rgba(0, 0, 0, 0.5) calc(100% - 6rem),
+                rgba(0, 0, 0, 0.32) calc(100% - 4.5rem),
+                rgba(0, 0, 0, 0.16) calc(100% - 3rem),
+                rgba(0, 0, 0, 0.04) calc(100% - 1.5rem),
+                transparent
+            ),
+            linear-gradient(
+                to bottom,
+                #000 calc(100% - 11rem),
+                rgba(0, 0, 0, 0.96) calc(100% - 9.625rem),
+                rgba(0, 0, 0, 0.84) calc(100% - 8.25rem),
+                rgba(0, 0, 0, 0.68) calc(100% - 6.875rem),
+                rgba(0, 0, 0, 0.5) calc(100% - 5.5rem),
+                rgba(0, 0, 0, 0.32) calc(100% - 4.125rem),
+                rgba(0, 0, 0, 0.16) calc(100% - 2.75rem),
+                rgba(0, 0, 0, 0.04) calc(100% - 1.375rem),
+                transparent
+            );
+        -webkit-mask-composite: source-in;
+        mask-composite: intersect;
+        pointer-events: none;
+    }
+    .frost > * {
+        position: relative;
+        width: 100%;
+        max-width: none;
+        padding-inline: 1rem;
+        box-sizing: border-box;
+    }
+    main.page {
+        flex: 1;
+    }
 
-  .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  @media (max-width: 40rem) {
     .top {
-      flex-direction: column;
-      gap: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
     }
-  }
+    @media (max-width: 40rem) {
+        .top {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
 
-  @keyframes bg-parallax {
-    to { transform: translateY(-40svh); }
-  }
+    @keyframes bg-parallax {
+        to {
+            transform: translateY(-40svh);
+        }
+    }
 
-  a {
-    color: var(--color);
-    text-decoration: none;
-  }
-  p a {
-    text-decoration: underline;
-  }
-  ::selection {
-    background: var(--color);
-    color: #0a0a0a;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-size: 1em;
-  }
+    a {
+        color: var(--color);
+        text-decoration: none;
+    }
+    p a {
+        text-decoration: underline;
+    }
+    ::selection {
+        background: var(--color);
+        color: #0a0a0a;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: 1em;
+    }
 </style>
