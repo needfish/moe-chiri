@@ -92,6 +92,7 @@ const { title, description, image } = Astro.props;
   :root {
     --color: #fa9442;
     --page-width: 100ch;
+    --latin-tracking: 0;
   }
 
   @font-face {
@@ -122,7 +123,7 @@ const { title, description, image } = Astro.props;
     flex-direction: column;
     color: #ccc;
     font: 500 clamp(16px, 0.5vw + 14px, 18px)/1.6 'Kitan Mono T', 'Noto Sans JP', monospace;
-    letter-spacing: -0.05em;
+    letter-spacing: var(--latin-tracking);
     text-wrap: balance;
     overflow-x: clip;
   }
@@ -130,7 +131,7 @@ const { title, description, image } = Astro.props;
     letter-spacing: 0;
   }
   :lang(ja) :not(.l) {
-    letter-spacing: -0.05em;
+    letter-spacing: var(--latin-tracking);
   }
   body::before {
     content: '';
