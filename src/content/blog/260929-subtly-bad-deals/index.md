@@ -6,7 +6,7 @@ tags: []
 
 Just today I got caught in a small scheme.
 
-It was a telesale call advertising a credit card (of a bank very closely related to where I work). I'm not a very good person at dealing with telecalls. The salesman overwhelmed me with details, but now that I looked back there were quite a number of important details they left out. It was a bad deal, for me, and now when I want to cancel they told me I would have to wait 2-3 months if I don't want to lose one annual year fees.
+It was a telesale call advertising a credit card (of a bank very closely related to where I work). I'm not a very good person at dealing with telecalls. The salesman overwhelmed me with details, but now that I looked back there were quite a number of important details they left out. It was a bad deal, for me, and now when I want to cancel they told me I would have to wait 2-3 months if I want to have my fees refunded.
 So as a post-mortem, and to vent out my anger, I will hereby show the details that allows a salesman to subtly sell a bad deal.
 
 ## Minimum spending, and paying with your time.
@@ -25,11 +25,11 @@ At least the gameplay could be enjoyable.
 ## Holding money hostage.
 
 "No fees" can have different implementations. In my case it was "We will deduct the fee from your account and refund it back to you".
-From a theoretical, balance sheet point, it is the same thing. But add in the temporal aspect, and you would see that they can hold your money hostage for some amount of time. And your eligibility to get it back is even more conditional.
+From a theoretical, balance sheet point, it is the same thing. But add in the temporal aspect, and you would see that they can hold your money hostage for an indeterminated amount of time (probably to embellish their own books when auditing comes). And your eligibility to get it back is even more conditional.
 
 I was convinced that such a period would be about 2 weeks, and yet, when I attempted to cancel, they told me to wait 2-3 months if I don't want to lose the fee. What else is it, if not an attempt to hold money hostage by the system?
 
-Is it fine to take in a sales deal? Sure. Is it fine to show empathy to the salesperson running KPI on the 29th day of the month? Best not to. My dissatisfaction ended up with "We will review the sales call and send feedback to the salesman". They might be getting a stern review, or not, idk. If everyone is pressured by their bosses to sell bad deals, whose fault is it, really?
+Is it fine to take in a sales deal? Sure. Is it fine to show empathy to the salesperson running KPI on the 29th day of the month? Best not to. My dissatisfaction ended up with "We will review the sales call and send feedback to the salesman". They might be getting a stern review, or not, I don't know. If everyone is pressured by their bosses to sell bad deals, whose fault is it, really?
 
 Client facing roles are tough. These people are pretty much weathering the storm from decisions not their own.
 
