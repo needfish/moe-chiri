@@ -25,7 +25,7 @@ At least the gameplay could be enjoyable.
 ## Holding money hostage.
 
 "No fees" can have different implementations. In my case it was "We will deduct the fee from your account and refund it back to you".
-From a theoretical, balance sheet point, it is the same thing. But add in the temporal aspect, and you would see that they can hold your money hostage for some amount of time.And your eligibility to get it back is even more conditional.
+From a theoretical, balance sheet point, it is the same thing. But add in the temporal aspect, and you would see that they can hold your money hostage for some amount of time. And your eligibility to get it back is even more conditional.
 
 I was convinced that such a period would be about 2 weeks, and yet, when I attempted to cancel, they told me to wait 2-3 months if I don't want to lose the fee. What else is it, if not an attempt to hold money hostage by the system?
 
