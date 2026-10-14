@@ -27,6 +27,8 @@
   },
   "devDependencies": {
     "@types/youtube": "^0.3.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
     "ttf2woff2": "^8.0.1"
   }
 }
