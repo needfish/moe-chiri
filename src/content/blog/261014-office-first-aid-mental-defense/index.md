@@ -17,8 +17,8 @@ One senior always responds with a quick quip. Another always jokes with a hint o
 
 Now how does this develop? I seem have picked up a number of these tricks myself -- quick jokes in a lassez-faire tone for defusal, creative appeasement to ward off messages pushing deadlines, rerouting requests to avoid piling work to myself, et cetera.
 
-It's applicable to outside the office too. When people socialize, they always have their own style of dealing with an encounter. Aggressive, enthusiastic; cordial, restrained. The public personality is one that is shaped to deal with the public matters.
+Once I see it, I see it everywhere. When people socialize, they always have their own style of dealing with an encounter. Aggressive, enthusiastic; cordial, restrained. The public personality is one that is shaped by the enviroment (and somewtimes, painful experiences) to deal with the public matters.
 
-It's somewhat of a survival skill, I would say. One that is gained after getting over stubbornness, and childish rightousness. One that is essential when you are at those above's beck and call, and their approval is what keeps you around. One that is even more essential, when you are on your own in society.
+It's somewhat of a survival skill, I would say, one that is in the realm of emotional intelligence. One that is gained after getting over stubbornness, and childish rightousness. One that is essential when you are at those above's beck and call, and their approval is what keeps you around. One that is even more essential, when you are on your own in society.
 
 I certainly felt like I have changed. Is this what they call maturity?
