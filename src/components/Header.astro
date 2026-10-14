@@ -1,36 +1,37 @@
 ---
 import { SITE_TITLE } from "../consts";
 ---
+
 <header>
-    <span class="site-title">{SITE_TITLE}</span>
-    <div class="separator">· · ✦ · ·</div>
-    <nav>
-        <a href="/">_home</a>
-        <a href="/archive/">_archive</a>
-    </nav>
+  <span class="site-title">{SITE_TITLE}</span>
+  <div class="separator">· · ✦ · ·</div>
+  <nav>
+    <a href="/">_home</a>
+    <a href="/archive/">_archive</a>
+  </nav>
 </header>
 
 <style>
-    header {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-    .site-title::after {
-        content: "▌";
-        margin-left: 0.25ch;
-        animation: blink 1.2s steps(1) infinite;
-    }
+  .site-title::after {
+    content: "▌";
+    margin-left: 0.25ch;
+    animation: blink 1.2s steps(1) infinite;
+  }
 
-    @keyframes blink {
-        50% {
-            opacity: 0;
-        }
+  @keyframes blink {
+    50% {
+      opacity: 0;
     }
+  }
 
-    nav {
-        display: flex;
-        gap: 1rem;
-    }
+  nav {
+    display: flex;
+    gap: 1rem;
+  }
 </style>

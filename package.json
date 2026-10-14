@@ -10,6 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "format": "prettier --write \"src/**/*.{astro,ts,js,mjs}\" \"scripts/*.mjs\"",
     "new": "bash scripts/new-post.sh",
     "publish": "bash scripts/publish.sh",
     "update": "bash scripts/update.sh"

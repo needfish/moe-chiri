@@ -1,232 +1,267 @@
 <div class="player" transition:persist="song-player">
-    <div class="song">
-        <span id="now-playing"></span>
-        <span id="play-hint" aria-hidden="true">play music<span class="arrows">&gt;&gt;</span></span>
-        <div class="transport">
-            <button id="prev-btn" aria-label="previous song"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5.5h2v13H6zm12 0v13l-8.5-6.5z"/></svg></button>
-            <div class="pad">
-            <button id="song-btn" aria-label="play song">
-            <svg class="orbit" viewBox="0 0 100 100" fill="none" aria-hidden="true"><circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="3" stroke-dasharray="250 39" transform="rotate(118 50 50)"/></svg>
-            <svg id="song-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+  <div class="song">
+    <span id="now-playing"></span>
+    <span id="play-hint" aria-hidden="true">
+      play music<span class="arrows">&gt;&gt;</span>
+    </span>
+    <div class="transport">
+      <button id="prev-btn" aria-label="previous song">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6 5.5h2v13H6zm12 0v13l-8.5-6.5z" />
+        </svg>
+      </button>
+      <div class="pad">
+        <button id="song-btn" aria-label="play song">
+          <svg
+            class="orbit"
+            viewBox="0 0 100 100"
+            fill="none"
+            aria-hidden="true"
+          >
+            <circle
+              cx="50"
+              cy="50"
+              r="46"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-dasharray="250 39"
+              transform="rotate(118 50 50)"
+            />
+          </svg>
+          <svg
+            id="song-icon"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M8 5.5v13l11-6.5z" />
+          </svg>
         </button>
-        </div>
-        <button id="next-btn" aria-label="next song"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 5.5h2v13h-2zM6 5.5v13l8.5-6.5z"/></svg></button>
-        </div>
+      </div>
+      <button id="next-btn" aria-label="next song">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M16 5.5h2v13h-2zM6 5.5v13l8.5-6.5z" />
+        </svg>
+      </button>
     </div>
-    <div id="yt-player"></div>
+  </div>
+  <div id="yt-player"></div>
 </div>
 
 <style>
+  .song {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .transport {
+    display: flex;
+    align-items: center;
+  }
+
+  .pad {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 4em;
+    aspect-ratio: 1;
+  }
+
+  #song-btn {
+    position: relative;
+    height: 3.2em;
+    aspect-ratio: 1;
+    border: none;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    display: grid;
+    place-items: center;
+  }
+
+  #song-btn .orbit {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #song-btn.playing .orbit {
+    animation: spin 6s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  #next-btn,
+  #prev-btn {
+    display: grid;
+    place-items: center;
+    width: 2em;
+    aspect-ratio: 1;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.6;
+  }
+
+  #next-btn svg,
+  #prev-btn svg {
+    width: 1.28em;
+    height: 1.28em;
+  }
+
+  #next-btn:hover,
+  #prev-btn:hover {
+    opacity: 1;
+  }
+
+  #song-icon {
+    display: block;
+    width: 40%;
+    height: 40%;
+  }
+
+  #play-hint {
+    position: absolute;
+    right: calc(100% + 0.5rem);
+    top: 50%;
+    translate: 0 -50%;
+    display: inline-flex;
+    gap: 0.3em;
+    white-space: nowrap;
+    opacity: 0.4;
+    user-select: none;
+  }
+
+  #play-hint.hidden {
+    display: none;
+  }
+
+  #now-playing {
+    min-width: 0;
+    max-width: 24rem;
+    overflow: hidden;
+    text-align: right;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.4s ease,
+      translate 0.4s ease;
+    translate: 0 0.4em;
+  }
+
+  #now-playing.show {
+    opacity: 1;
+    pointer-events: auto;
+    translate: 0 0;
+  }
+
+  @media (max-width: 40rem) {
     .song {
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .transport {
-        display: flex;
-        align-items: center;
-    }
-
-    .pad {
-        position: relative;
-        display: grid;
-        place-items: center;
-        width: 4em;
-        aspect-ratio: 1;
-    }
-
-    #song-btn {
-        position: relative;
-        height: 3.2em;
-        aspect-ratio: 1;
-        border: none;
-        background: none;
-        color: inherit;
-        cursor: pointer;
-        padding: 0;
-        display: grid;
-        place-items: center;
-    }
-
-    #song-btn .orbit {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    #song-btn.playing .orbit {
-        animation: spin 6s linear infinite;
-    }
-
-    @keyframes spin {
-        to {
-            transform: rotate(1turn);
-        }
-    }
-
-    #next-btn,
-    #prev-btn {
-        display: grid;
-        place-items: center;
-        width: 2em;
-        aspect-ratio: 1;
-        border: 1px solid currentColor;
-        border-radius: 50%;
-        background: none;
-        color: inherit;
-        cursor: pointer;
-        padding: 0;
-        opacity: 0.6;
-    }
-
-    #next-btn svg,
-    #prev-btn svg {
-        width: 1.28em;
-        height: 1.28em;
-    }
-
-    #next-btn:hover,
-    #prev-btn:hover {
-        opacity: 1;
-    }
-
-    #song-icon {
-        display: block;
-        width: 40%;
-        height: 40%;
+      flex-direction: row-reverse;
+      justify-content: center;
     }
 
     #play-hint {
-        position: absolute;
-        right: calc(100% + 0.5rem);
-        top: 50%;
-        translate: 0 -50%;
-        display: inline-flex;
-        gap: 0.3em;
-        white-space: nowrap;
-        opacity: 0.4;
-        user-select: none;
+      right: auto;
+      left: calc(100% + 0.5rem);
+      flex-direction: row-reverse;
     }
 
-    #play-hint.hidden {
-        display: none;
+    #play-hint .arrows {
+      transform: scaleX(-1);
     }
 
     #now-playing {
-        min-width: 0;
-        max-width: 24rem;
-        overflow: hidden;
-        text-align: right;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.4s ease, translate 0.4s ease;
-        translate: 0 0.4em;
+      max-width: 60vw;
+      text-align: left;
     }
-
-    #now-playing.show {
-        opacity: 1;
-        pointer-events: auto;
-        translate: 0 0;
-    }
-
-    @media (max-width: 40rem) {
-        .song {
-            flex-direction: row-reverse;
-            justify-content: center;
-        }
-
-        #play-hint {
-            right: auto;
-            left: calc(100% + 0.5rem);
-            flex-direction: row-reverse;
-        }
-
-        #play-hint .arrows {
-            transform: scaleX(-1);
-        }
-
-        #now-playing {
-            max-width: 60vw;
-            text-align: left;
-        }
-    }
+  }
 </style>
 
 <style is:global>
-    /* the YT API replaces this div with an iframe, losing the scoped attribute */
-    #yt-player {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        opacity: 0;
-        pointer-events: none;
-    }
+  /* the YT API replaces this div with an iframe, losing the scoped attribute */
+  #yt-player {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
 </style>
 
 <script>
-    const icons = {
-        play: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>',
-        pause: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg>',
-    };
-    const btn = document.getElementById('song-btn') as HTMLButtonElement;
-    const icon = document.getElementById('song-icon')!;
-    const label = document.getElementById('now-playing')!;
-    const hint = document.getElementById('play-hint')!;
-    if (!btn.dataset.bound) {
-        btn.dataset.bound = '1';
-        const createPlayer = () => {
-            (window as any).player = new YT.Player('yt-player', {
-                playerVars: {
-                    playsinline: 1,
-                    listType: 'playlist',
-                    list: 'PLQKZBqSJS3rk',
-                    shuffle: 1,
-                } as YT.PlayerVars,
-                events: {
-                    onReady: () => (window as any).player!.playVideo(),
-                    onStateChange: (e: YT.OnStateChangeEvent) => {
-                        const player = (window as any).player as YT.Player;
-                        const playing = e.data === YT.PlayerState.PLAYING;
-                        icon.innerHTML = playing ? icons.pause : icons.play;
-                        btn.classList.toggle('playing', playing);
-                        if (playing) {
-                            const d = player.getVideoData();
-                            const text = `now playing:<br><a href="https://youtu.be/${d.video_id}" target="_blank" rel="noopener">${d.title}</a>`;
-                            if (label.innerHTML !== text) label.innerHTML = text;
-                        }
-                        label.classList.toggle('show', playing);
-                        if (playing) hint.classList.add('hidden');
-                    },
-                },
-            });
-        };
-        // appends the YouTube IFrame API script once, then runs onReady
-        const loadYouTubeAPI = (onReady: () => void): void => {
-            (window as any).onYouTubeIframeAPIReady = onReady;
-            const tag = document.createElement('script');
-            tag.src = 'https://www.youtube.com/iframe_api';
-            document.head.append(tag);
-        };
-        btn.addEventListener('click', () => {
-            const w = window as any;
-            if (w.player) {
-                w.player.getPlayerState() === YT.PlayerState.PLAYING
-                    ? w.player.pauseVideo()
-                    : w.player.playVideo();
-            } else if (w.YT?.Player) {
-                createPlayer();
-            } else {
-                loadYouTubeAPI(createPlayer);
+  const icons = {
+    play: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>',
+    pause:
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg>',
+  };
+  const btn = document.getElementById("song-btn") as HTMLButtonElement;
+  const icon = document.getElementById("song-icon")!;
+  const label = document.getElementById("now-playing")!;
+  const hint = document.getElementById("play-hint")!;
+  if (!btn.dataset.bound) {
+    btn.dataset.bound = "1";
+    const createPlayer = () => {
+      (window as any).player = new YT.Player("yt-player", {
+        playerVars: {
+          playsinline: 1,
+          listType: "playlist",
+          list: "PLQKZBqSJS3rk",
+          shuffle: 1,
+        } as YT.PlayerVars,
+        events: {
+          onReady: () => (window as any).player!.playVideo(),
+          onStateChange: (e: YT.OnStateChangeEvent) => {
+            const player = (window as any).player as YT.Player;
+            const playing = e.data === YT.PlayerState.PLAYING;
+            icon.innerHTML = playing ? icons.pause : icons.play;
+            btn.classList.toggle("playing", playing);
+            if (playing) {
+              const d = player.getVideoData();
+              const text = `now playing:<br><a href="https://youtu.be/${d.video_id}" target="_blank" rel="noopener">${d.title}</a>`;
+              if (label.innerHTML !== text) label.innerHTML = text;
             }
-        });
-        document.getElementById('next-btn')?.addEventListener('click', () => {
-            (window as any).player?.nextVideo();
-        });
-        document.getElementById('prev-btn')?.addEventListener('click', () => {
-            (window as any).player?.previousVideo();
-        });
-    }
+            label.classList.toggle("show", playing);
+            if (playing) hint.classList.add("hidden");
+          },
+        },
+      });
+    };
+    // appends the YouTube IFrame API script once, then runs onReady
+    const loadYouTubeAPI = (onReady: () => void): void => {
+      (window as any).onYouTubeIframeAPIReady = onReady;
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.append(tag);
+    };
+    btn.addEventListener("click", () => {
+      const w = window as any;
+      if (w.player) {
+        w.player.getPlayerState() === YT.PlayerState.PLAYING
+          ? w.player.pauseVideo()
+          : w.player.playVideo();
+      } else if (w.YT?.Player) {
+        createPlayer();
+      } else {
+        loadYouTubeAPI(createPlayer);
+      }
+    });
+    document.getElementById("next-btn")?.addEventListener("click", () => {
+      (window as any).player?.nextVideo();
+    });
+    document.getElementById("prev-btn")?.addEventListener("click", () => {
+      (window as any).player?.previousVideo();
+    });
+  }
 </script>

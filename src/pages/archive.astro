@@ -3,60 +3,61 @@ import { getCollection } from "astro:content";
 import BasePage from "../layouts/BasePage.astro";
 
 const posts = (await getCollection("blog")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
 const byYear = new Map<number, Map<number, typeof posts>>();
 for (const post of posts) {
-    const d = post.data.pubDate;
-    const y = d.getFullYear();
-    const m = d.getMonth();
-    const mm = byYear.get(y) ?? new Map();
-    byYear.set(y, mm);
-    if (!mm.has(m)) mm.set(m, []);
-    mm.get(m)?.push(post);
+  const d = post.data.pubDate;
+  const y = d.getFullYear();
+  const m = d.getMonth();
+  const mm = byYear.get(y) ?? new Map();
+  byYear.set(y, mm);
+  if (!mm.has(m)) mm.set(m, []);
+  mm.get(m)?.push(post);
 }
 ---
 
 <BasePage title="archive">
-    {
-        [...byYear.entries()].map(([year, monthMap]) =>
-            [...monthMap.entries()].map(([month, monthPosts]) => (
-                <div class="archive-group">
-                    <h2 class="archive-heading">
-                        {String(year).slice(2)}.{String(month + 1).padStart(2, "0")}.
-                    </h2>
-                    <ul class="archive-list">
-                        {monthPosts.map((post) => (
-                            <li>
-                                <span class="archive-date">{String(post.data.pubDate.getUTCDate()).padStart(2, "0")}</span><a href={"/blog/" + post.id + "/"}>{post.data.title}</a>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )),
-        )
-    }
+  {[...byYear.entries()].map(([year, monthMap]) =>
+    [...monthMap.entries()].map(([month, monthPosts]) => (
+      <div class="archive-group">
+        <h2 class="archive-heading">
+          {String(year).slice(2)}.{String(month + 1).padStart(2, "0")}.
+        </h2>
+        <ul class="archive-list">
+          {monthPosts.map((post) => (
+            <li>
+              <span class="archive-date">
+                {String(post.data.pubDate.getUTCDate()).padStart(2, "0")}
+              </span>
+              <a href={"/blog/" + post.id + "/"}>{post.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )),
+  )}
 </BasePage>
 
 <style>
-    .archive-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+  .archive-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-    .archive-group + .archive-group {
-        margin-top: 1.5rem;
-    }
+  .archive-group + .archive-group {
+    margin-top: 1.5rem;
+  }
 
-    .archive-heading {
-        font-weight: normal;
-        margin-bottom: 0;
-    }
+  .archive-heading {
+    font-weight: normal;
+    margin-bottom: 0;
+  }
 
-    .archive-date {
-        opacity: 0.55;
-        margin-right: 1ch;
-    }
+  .archive-date {
+    opacity: 0.55;
+    margin-right: 1ch;
+  }
 </style>

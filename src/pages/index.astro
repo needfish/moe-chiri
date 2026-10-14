@@ -4,57 +4,67 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
 <BasePage title={SITE_TITLE} description={SITE_DESCRIPTION}>
-    <section class="bio">
-        <p>Hi, I put my stuff here. Not much going on at the moment.</p>
-    </section>
-    <section class="section" id="links">
-        <ul class="link-list">
-            <li>
-                <a href="https://bsky.app/profile/kitan.moe">_bluesky</a>
-                <span class="link-comment">// you can contact me here</span>
-            </li>
-            <li><a href="https://github.com/needfish">_github</a></li>
-            <li>
-                <button class="rss-copy" data-url="https://kitan.moe/rss.xml">_rss</button> <span class="link-comment">// copy feed url</span>
-            </li>
-        </ul>
-    </section>
-    <section class="section" id="colophon">
-        <p>background: <a href="https://x.com/gracile_jp">@gracile_jp</a></p>
-        <p>typeface: custom build of <a href="https://typeof.net/Iosevka/">iosevka</a></p>
-    </section>
+  <section class="bio">
+    <p>Hi, I put my stuff here. Not much going on at the moment.</p>
+  </section>
+  <section class="section" id="links">
+    <ul class="link-list">
+      <li>
+        <a href="https://bsky.app/profile/kitan.moe">_bluesky</a>
+        <span class="link-comment">// you can contact me here</span>
+      </li>
+      <li>
+        <a href="https://github.com/needfish">_github</a>
+      </li>
+      <li>
+        <button class="rss-copy" data-url="https://kitan.moe/rss.xml">
+          _rss
+        </button>{" "}
+        <span class="link-comment">// copy feed url</span>
+      </li>
+    </ul>
+  </section>
+  <section class="section" id="colophon">
+    <p>
+      background: <a href="https://x.com/gracile_jp">@gracile_jp</a>
+    </p>
+    <p>
+      typeface: custom build of{" "}
+      <a href="https://typeof.net/Iosevka/">iosevka</a>
+    </p>
+  </section>
 </BasePage>
 
 <style>
-    .link-list {
-        list-style: none;
-        padding: 0;
-    }
+  .link-list {
+    list-style: none;
+    padding: 0;
+  }
 
-    .rss-copy {
-        background: none;
-        border: none;
-        padding: 0;
-        font: inherit;
-        color: var(--color);
-        cursor: pointer;
-    }
+  .rss-copy {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: var(--color);
+    cursor: pointer;
+  }
 
-    .link-comment {
-        opacity: 0.55;
-    }
+  .link-comment {
+    opacity: 0.55;
+  }
 
-    #colophon p {
-        margin: 0;
-    }
+  #colophon p {
+    margin: 0;
+  }
 </style>
 <script>
-    document.querySelectorAll<HTMLElement>(".rss-copy").forEach((el) => {
-        el.addEventListener("click", async () => {
-            await navigator.clipboard.writeText(el.dataset.url!);
-            const old = el.textContent;
-            el.textContent = "_copied";
-            setTimeout(() => (el.textContent = old), 1200);
-        });
+  document.querySelectorAll<HTMLElement>(".rss-copy").forEach((el) => {
+    el.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(el.dataset.url!);
+      const old = el.textContent;
+      el.textContent = "_copied";
+      setTimeout(() => (el.textContent = old), 1200);
     });
+  });
 </script>
