@@ -1,5 +1,5 @@
 ---
-title: "Office First-aid Mental Defense"
+title: "First-aid Mental Defense"
 pubDate: '2026-10-14'
 tags: []
 ---
