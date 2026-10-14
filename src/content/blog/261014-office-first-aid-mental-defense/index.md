@@ -17,6 +17,6 @@ One senior always responds with a quick quip. Another always jokes with a hint o
 
 Now how does this develop? I seem have picked up a number of these tricks myself -- quick jokes in a lassez-faire tone for defusal, creative appeasement to ward off messages pushing deadlines, rerouting requests to avoid piling work to myself, et cetera.
 
-It's somewhat of a survival skill, I would say. One that is gained after getting over stubbornness, and childish rightousness. One that is essential when you are at those above's beck and call, and at their mercy.
+It's somewhat of a survival skill, I would say. One that is gained after getting over stubbornness, and childish rightousness. One that is essential when you are at those above's beck and call, and their approval is what keeps you around.
 
 I certainly felt like I have changed. Is this what they call maturity?
