@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BasePage from "./BasePage.astro";
+import { SITE_TITLE } from "../consts";
 
 type Props = CollectionEntry<"blog">["data"] & {
     prev?: CollectionEntry<"blog">;
@@ -17,7 +18,7 @@ function formatDate(date: Date) {
 }
 ---
 
-<BasePage title={`${title} — kitan's space travel`} image={heroImage}>
+<BasePage title={`${title} — ${SITE_TITLE}`} image={heroImage}>
     <h1>{title}</h1>
     <p class="date">
         <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>

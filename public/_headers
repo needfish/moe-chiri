@@ -9,9 +9,6 @@
 /test-bg/*
   Cache-Control: public, max-age=31536000, immutable
 
-/wallpaper-*
-  Cache-Control: public, max-age=31536000, immutable
-
 # Hashed by the bundler, safe to cache forever.
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
