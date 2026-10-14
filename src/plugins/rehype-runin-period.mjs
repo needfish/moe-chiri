@@ -1,4 +1,3 @@
-// @ts-check
 import { visit } from 'unist-util-visit';
 
 /** Append "." to run-in headings (h2/h3) that don't end with "." or "?". */

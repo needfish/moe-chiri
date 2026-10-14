@@ -184,7 +184,7 @@
                     listType: 'playlist',
                     list: 'PLQKZBqSJS3rk',
                     shuffle: 1,
-                },
+                } as YT.PlayerVars,
                 events: {
                     onReady: () => (window as any).player!.playVideo(),
                     onStateChange: (e: YT.OnStateChangeEvent) => {
