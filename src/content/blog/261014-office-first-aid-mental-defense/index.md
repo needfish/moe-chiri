@@ -11,7 +11,8 @@ Fortunately, the mutual commiseration means that there is really little strife o
 
 The one observation I want to talk about is how people react to comments from others, or off-hand remarks. Of course, they are influenced by the overall culture, but this is about dealing with comments that one might not take well.
 It's generally not good to lash out, ever; especially when one cannot infer the true intention behind remarks. What stood out to me is that, each person has their own style of communication, developed to cope with the environment.
-A senior's remark might be snide, but it might be because it's how they deal with their previous peers, and not actually bad intentions.
+
+A senior's remark might be snide, but it might be because it's how they learned to deal with their previous peers, and not actually with bad intentions.
 One senior always responds with a quick quip. Another always jokes with a hint of lowering themselves. It's how they respond to offhand remarks from higher-ups, to defuse the pressure; now that I'm here they use the same style of conversation in our chats, almost like an instinctual response.
 
 Now how does this develop? I seem have picked up a number of these tricks myself -- quick jokes in a lassez-faire tone for defusal, creative appeasement to ward off messages pushing deadlines, rerouting requests to avoid piling work to myself, et cetera.
