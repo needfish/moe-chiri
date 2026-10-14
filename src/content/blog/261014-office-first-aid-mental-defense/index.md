@@ -1,0 +1,21 @@
+---
+title: "Office First-aid Mental Defense"
+pubDate: '2026-10-14'
+tags: []
+---
+
+As of now, it has been a couple months since I started out at this job.
+
+The office is quite a stressful place, where people pile deadlines on each other always, every hour of the working day.
+Fortunately, the mutual commiseration means that there is really little strife or conflict. But I guess blowing up emotionally would get you fired on the spot, so this is kind of a forced situation.
+
+The one observation I want to talk about is how people react to comments from others, or off-hand remarks. Of course, they are influenced by the overall culture, but this is about dealing with comments that one might not take well.
+It's generally not good to lash out against comments, especially when one cannot infer the true intention behind them. Here is what is interesting to me: Each person has their own style of communication, developed to cope with the environment.
+A senior's remark might be snide, but it might be because it's how they deal with their previous peers, and not actually bad intentions.
+One senior always responds with a quick quip. Another always jokes with a hint of lowering themselves. It's how they respond to offhand remarks from higher-ups, to defuse the pressure; now that I'm here they use the same style of conversation in our chats, almost like an instinctual response.
+
+Now how does this develop? In my own communication, I have picked up a number of these tricks -- quick jokes in a lassez-faire tone for defusal, creative appeasement to ward off messages pushing deadlines, rerouting requests to avoid piling work to myself, et cetera.
+
+It's somewhat of a survival skill, I would say. One that is gained after getting over stubbornness, and childish rightousness. One that is essential when you are at those above's beck and call, and at their mercy.
+
+I certainly felt like I have changed. Is this what they call maturity?
