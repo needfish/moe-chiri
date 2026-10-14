@@ -15,7 +15,7 @@ It's generally not good to lash out, ever; especially when one cannot infer the 
 A senior's remark might be snide, but it might be because it's how they learned to deal with their previous peers, and not actually with bad intentions.
 One senior always responds with a quick quip. Another always jokes with a hint of lowering themselves. It's how they respond to offhand remarks from higher-ups, to defuse the pressure; now that I'm here they use the same style of conversation in our chats, almost like an instinctual response.
 
-Now how does this develop? I seem have picked up a number of these tricks myself -- quick jokes in a lassez-faire tone for defusal, creative appeasement to ward off messages pushing deadlines, rerouting requests to avoid piling work to myself, et cetera.
+Now how does this develop? I seem to have picked up a number of these tricks myself - quick jokes in a lassez-faire tone for defusal, creative appeasement to ward off messages pushing deadlines, rerouting requests to avoid piling work to myself, et cetera.
 
 Once I see it, I see it everywhere. When people socialize, they always have their own style of dealing with an encounter. Aggressive, enthusiastic; cordial, restrained. The public personality is one that is shaped by the enviroment (and somewtimes, painful experiences) to deal with the public matters.
 
