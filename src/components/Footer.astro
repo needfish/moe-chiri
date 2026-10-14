@@ -1,16 +1,16 @@
 ---
-const year = new Date().getFullYear();
-const month = String(new Date().getMonth() + 1).padStart(2, "0");
+const now = new Date();
+const version = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, "0")}`;
 ---
 
+<style>
+    footer span {
+        opacity: 0.55;
+    }
+</style>
 <footer>
-    <style>
-        footer span {
-            opacity: 0.55;
-        }
-    </style>
     <div class="separator">· · ✦ · ·</div>
     <div class="footer-content">
-      <span>v{year}.{month}</span>
+      <span>v{version}</span>
     </div>
 </footer>

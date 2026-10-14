@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PYFTSUBSET="${PYFTSUBSET:-/Users/kitan/Library/Python/3.9/bin/pyftsubset}"
+PYFTSUBSET="${PYFTSUBSET:-pyftsubset}"
 
 usage() {
   cat <<EOF

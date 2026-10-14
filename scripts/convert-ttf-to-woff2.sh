@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PYTHON="${PYTHON:-/Library/Developer/CommandLineTools/usr/bin/python3}"
-PYTHONPATH="${PYTHONPATH:-/Users/kitan/Library/Python/3.9/lib/python/site-packages}"
+PYTHON="${PYTHON:-python3}"
+PYTHONPATH="${PYTHONPATH:-}"
 
 if [ $# -eq 0 ]; then
   echo "Usage: $0 <input.ttf> [input2.otf ...]"
