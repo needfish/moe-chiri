@@ -17,10 +17,16 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
         <a href="https://github.com/needfish">_github</a>
       </li>
       <li>
-        <button class="rss-copy" data-url="https://kitan.moe/rss.xml">
+        <button class="copy" data-copy="https://kitan.moe/rss.xml">
           _rss
         </button>{" "}
         <span class="link-comment">// copy feed url</span>
+      </li>
+      <li>
+        <button class="copy" data-copy="curl kitan.moe">
+          _curl
+        </button>{" "}
+        <span class="link-comment">// try curl on this site</span>
       </li>
     </ul>
   </section>
@@ -41,7 +47,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
     padding: 0;
   }
 
-  .rss-copy {
+  .copy {
     background: none;
     border: none;
     padding: 0;
@@ -59,9 +65,9 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
   }
 </style>
 <script>
-  document.querySelectorAll<HTMLElement>(".rss-copy").forEach((el) => {
+  document.querySelectorAll<HTMLElement>(".copy").forEach((el) => {
     el.addEventListener("click", async () => {
-      await navigator.clipboard.writeText(el.dataset.url!);
+      await navigator.clipboard.writeText(el.dataset.copy!);
       const old = el.textContent;
       el.textContent = "_copied";
       setTimeout(() => (el.textContent = old), 1200);
