@@ -7,7 +7,11 @@ function formatDate(date: Date): string {
   return date.toISOString().slice(0, 10).replaceAll("-", ".");
 }
 
-const homeText = `${SITE_TITLE}
+const titleFrame = `+${"-".repeat(SITE_TITLE.length + 2)}+`;
+
+const homeText = `${titleFrame}
+| ${SITE_TITLE} |
+${titleFrame}
 ${SITE_DESCRIPTION}
 
 Hi, I put my stuff here. Not much going on at the moment.
@@ -15,22 +19,20 @@ Hi, I put my stuff here. Not much going on at the moment.
 _links
 _bluesky  https://bsky.app/profile/kitan.moe  // you can contact me here
 _github   https://github.com/needfish
-_rss      ${SITE_URL}/rss.xml  // copy feed url
-_archive  ${SITE_URL}/archive  // writings
-
-_colophon
-background: https://x.com/gracile_jp
-typeface: custom build of iosevka  https://typeof.net/Iosevka/
+_rss      https://kitan.moe/rss.xml           // copy feed url
+_archive  https://kitan.moe/archive           // blog archive, also curl-able!
 `;
 
 function postListText(posts: CollectionEntry<"blog">[]): string {
+  const titleWidth = Math.max(...posts.map((post) => post.data.title.length));
   return (
     [
       "archive",
+      "// you can curl to each post!",
       "",
       ...posts.map(
         (post) =>
-          `${formatDate(post.data.pubDate)}  ${post.data.title}  ${SITE_URL}/blog/${post.id}`,
+          `${formatDate(post.data.pubDate)}  ${post.data.title.padEnd(titleWidth)}  ${SITE_URL}/blog/${post.id}`,
       ),
     ].join("\n") + "\n"
   );
