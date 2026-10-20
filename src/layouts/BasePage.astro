@@ -81,26 +81,24 @@ const { title, description, image } = Astro.props;
               event.ctrlKey ||
               event.altKey ||
               event.shiftKey;
-            if (isModified) return;
-
-            const link =
-              event.target instanceof Element
-                ? event.target.closest("a[href]")
-                : null;
-            if (!(link instanceof HTMLAnchorElement)) return;
+            const target = event.target as Element;
+            const link = target.closest("a[href]");
             if (
+              isModified ||
+              !(link instanceof HTMLAnchorElement) ||
               (link.target && link.target !== "_self") ||
               link.hasAttribute("download")
             )
               return;
 
             const url = new URL(link.href, location.href);
-            if (url.origin !== location.origin) return;
             if (
-              normalizePath(url.pathname) !== normalizePath(location.pathname)
+              url.origin !== location.origin ||
+              normalizePath(url.pathname) !==
+                normalizePath(location.pathname) ||
+              url.search !== location.search
             )
               return;
-            if (url.search !== location.search) return;
 
             event.preventDefault();
 
