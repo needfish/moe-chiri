@@ -74,6 +74,10 @@ const { title, description, image } = Astro.props;
         document.addEventListener(
           "click",
           (event) => {
+            const link = (event.target as Element).closest<HTMLAnchorElement>(
+              "a[href]",
+            );
+            if (!(link instanceof HTMLAnchorElement)) return;
             const isModified =
               event.defaultPrevented ||
               event.button !== 0 ||
@@ -81,11 +85,8 @@ const { title, description, image } = Astro.props;
               event.ctrlKey ||
               event.altKey ||
               event.shiftKey;
-            const target = event.target as Element;
-            const link = target.closest("a[href]");
             if (
               isModified ||
-              !(link instanceof HTMLAnchorElement) ||
               (link.target && link.target !== "_self") ||
               link.hasAttribute("download")
             )
@@ -106,7 +107,7 @@ const { title, description, image } = Astro.props;
               ? document.getElementById(url.hash.slice(1))
               : null;
             if (anchor) anchor.scrollIntoView({ behavior: "smooth" });
-            else window.scrollTo({ top: 0, behavior: "smooth" });
+            else scrollTo({ top: 0, behavior: "smooth" });
           },
           true,
         );
