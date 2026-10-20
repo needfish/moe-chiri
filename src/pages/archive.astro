@@ -6,38 +6,36 @@ const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const byYear = new Map<number, Map<number, typeof posts>>();
+const groups: [string, typeof posts][] = [];
 for (const post of posts) {
   const d = post.data.pubDate;
-  const y = d.getFullYear();
-  const m = d.getMonth();
-  const mm = byYear.get(y) ?? new Map();
-  byYear.set(y, mm);
-  if (!mm.has(m)) mm.set(m, []);
-  mm.get(m)?.push(post);
+  const key =
+    String(d.getFullYear()).slice(2) +
+    "." +
+    String(d.getMonth() + 1).padStart(2, "0") +
+    ".";
+  const last = groups.at(-1);
+  if (last?.[0] === key) last[1].push(post);
+  else groups.push([key, [post]]);
 }
 ---
 
 <BasePage title="archive">
-  {[...byYear.entries()].map(([year, monthMap]) =>
-    [...monthMap.entries()].map(([month, monthPosts]) => (
-      <div class="archive-group">
-        <h2 class="archive-heading">
-          {String(year).slice(2)}.{String(month + 1).padStart(2, "0")}.
-        </h2>
-        <ul class="archive-list">
-          {monthPosts.map((post) => (
-            <li>
-              <span class="archive-date">
-                {String(post.data.pubDate.getUTCDate()).padStart(2, "0")}
-              </span>
-              <a href={"/blog/" + post.id + "/"}>{post.data.title}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )),
-  )}
+  {groups.map(([heading, monthPosts]) => (
+    <div class="archive-group">
+      <h2 class="archive-heading">{heading}</h2>
+      <ul class="archive-list">
+        {monthPosts.map((post) => (
+          <li>
+            <span class="archive-date">
+              {String(post.data.pubDate.getUTCDate()).padStart(2, "0")}
+            </span>
+            <a href={"/blog/" + post.id + "/"}>{post.data.title}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
 </BasePage>
 
 <style>
