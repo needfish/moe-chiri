@@ -56,23 +56,15 @@ const { title, description, image } = Astro.props;
       function initBackgroundParallaxFallback() {
         if (CSS.supports("animation-timeline: scroll()")) return;
 
-        let cap = innerHeight * 0.4;
         const shift = () => {
+          const cap = innerHeight * 0.4;
           document.body.style.setProperty(
             "--bg-shift",
-            `${-Math.max(0, Math.min(scrollY * 0.25, cap))}px`,
+            `${-Math.min(scrollY * 0.25, cap)}px`,
           );
         };
 
         addEventListener("scroll", shift, { passive: true });
-        addEventListener(
-          "orientationchange",
-          () => {
-            cap = innerHeight * 0.4;
-            shift();
-          },
-          { passive: true },
-        );
         shift();
       }
 
@@ -82,16 +74,14 @@ const { title, description, image } = Astro.props;
         document.addEventListener(
           "click",
           (event) => {
-            if (
+            const isModified =
               event.defaultPrevented ||
               event.button !== 0 ||
               event.metaKey ||
               event.ctrlKey ||
               event.altKey ||
-              event.shiftKey
-            ) {
-              return;
-            }
+              event.shiftKey;
+            if (isModified) return;
 
             const link =
               event.target instanceof Element
