@@ -229,7 +229,6 @@ const { title, description, image } = Astro.props;
   .frost::before {
     content: "";
     position: absolute;
-    animation: frost-in 0.2s ease-out;
     inset: 0 -12rem -6rem;
     background: rgba(10, 10, 10, 0.75);
     -webkit-backdrop-filter: blur(28px) saturate(1.2);
@@ -329,11 +328,6 @@ const { title, description, image } = Astro.props;
     }
   }
 
-  @keyframes frost-in {
-    from {
-      opacity: 0;
-    }
-  }
   @keyframes bg-parallax {
     to {
       transform: translateY(-40svh);
