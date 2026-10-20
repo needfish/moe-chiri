@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
-git add -A
-git commit -m "${1:-update}"
-git push
+msg="${1:-update}"
+if command -v jj >/dev/null && jj root >/dev/null 2>&1; then
+  jj commit -m "$msg"
+  jj git push
+else
+  git add -A
+  git commit -m "$msg"
+  git push
+fi
