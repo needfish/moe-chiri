@@ -223,6 +223,13 @@ const { title, description, image } = Astro.props;
     animation-range: 0 160svh;
     transform: translateY(var(--bg-shift, 0px));
   }
+
+  @keyframes bg-parallax {
+    to {
+      transform: translateY(-40svh);
+    }
+  }
+
   @media (max-width: 40rem) {
     body::before {
       background-image: url("/test-bg/gracile/gracile-earth-debris-field-1024.webp");
@@ -281,12 +288,6 @@ const { title, description, image } = Astro.props;
     .top {
       flex-direction: column;
       gap: 0.5rem;
-    }
-  }
-
-  @keyframes bg-parallax {
-    to {
-      transform: translateY(-40svh);
     }
   }
 
